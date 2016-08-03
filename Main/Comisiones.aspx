@@ -7,6 +7,8 @@
 <head runat="server">
 <%--    <script src="http://code.jquery.com/jquery-1.8.3.js"></script> 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>--%>
+    <link rel="stylesheet" href="../css/footable.bootstrap.min.css" />
+
         <script src="../js/comisiones.js"></script> 
 
 
@@ -52,7 +54,7 @@
         <div class="row">  
             <div class="ibox-content">   
                 <div class="table-responsive">   
-                <asp:GridView ID="dgvcomisiones" AutoGenerateColumns="false" runat="server" Width="1000" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" CssClass="dgvcomisiones table table-hover" AllowPaging="True" PageSize="10" >
+               <%-- <asp:GridView ID="dgvcomisiones" AutoGenerateColumns="false" runat="server" Width="1000" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" CssClass="dgvcomisiones table table-hover" data-paging="true">
                     <Columns>
                         <asp:BoundField DataField="CIP" HeaderText="CIP" />
                         <asp:BoundField DataField="GRADO" HeaderText="GRADO" />
@@ -61,28 +63,23 @@
                         <asp:BoundField DataField="APELLIDO_MATERNO" HeaderText="APELLIDO MATERNO" />
                         <asp:BoundField DataField="NOMBRES" HeaderText="NOMBRES" />
                         <asp:BoundField DataField="COD_UNIDAD" HeaderText="UNIDAD" />
-                    </Columns>
-                    
-                <PagerStyle CssClass="pagination pull-right" />
-                <PagerSettings
-                    Mode="NumericFirstLast"
-                    PageButtonCount="5"
-                    FirstPageText="&lt;i class=&quot;icon-step-backward&quot;&gt;&lt;/i&gt;"
-                    LastPageText="&lt;i class=&quot;icon-step-forward&quot;&gt;&lt;/i&gt;"
-                    NextPageText="&lt;i class=&quot;icon-forward&quot;&gt;&lt;/i&gt;"
-                    PreviousPageText="&lt;i class=&quot;icon-backward&quot;&gt;&lt;/i&gt;" />           
-                </asp:GridView>    
+                    </Columns>                  
+                
+                </asp:GridView>    --%>
+                    <table id="dgvcomisiones" class="table table-hover dgvcomisiones" data-paging="true"></table>
                     </div>
+              
                 <div id="countreg">
                     <span class="badge badge-warning" style="padding:8px;display:none;"></span>
-                </div>                                       
+                </div>   
+                                           
             </div>
         </div>                      
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DIREJPER-CPVConnectionString %>" SelectCommand="exec [sp_listado_maspe] @mssql = 1 ">
+        <%--<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DIREJPER-CPVConnectionString %>" SelectCommand="exec [sp_listado_maspe] @mssql = 1 ">
             <SelectParameters>
                 <asp:Parameter DefaultValue="1" Name="mssql" />
             </SelectParameters>
-        </asp:SqlDataSource>
+        </asp:SqlDataSource>--%>
              <div class="row opciones_dgvcomisiones">              
                     <div class="ibox-title">                                  
                         <table>
@@ -107,6 +104,7 @@
 
     
     </form>
- 
+     <script type="text/javascript" src="http://fooplugins.github.io/FooTable/compiled/footable.js"></script>
+
 </body>
 </html>

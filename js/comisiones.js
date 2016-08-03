@@ -47,7 +47,21 @@
 
         var obj = jQuery.parseJSON(response.d);
         drawTable(obj);
+
+        var columns =[
+                        { "name": "CIP", "title": "CIP", "breakpoints": "xs sm", "style": { "width": 80, "maxWidth": 80 } },
+                        { "name": "GRADO", "title": "GRADO" },
+                        { "name": "SITUACION", "title": "SITUACION" },
+                        { "name": "APELLIDO_PATERNO", "title": "APELLIDO PATERNO" },
+                        { "name": "APELLIDO_MATERNO", "title": "APELLIDO MATERNO", "breakpoints": "xs sm", "style": { "maxWidth": 200, "overflow": "hidden", "textOverflow": "ellipsis", "wordBreak": "keep-all", "whiteSpace": "nowrap" } },
+                        { "name": "NOMBRES", "title": "NOMBRES", "type": "date", "breakpoints": "xs sm md"},
+                        { "name": "COD_UNIDAD", "title": "UNIDAD", "breakpoints": "xs sm md" }
+                    ]
       
+        $('.dgvcomisiones').footable({
+            "columns": columns,
+            "rows": obj
+        });
     }
 
         
