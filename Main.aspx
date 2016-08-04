@@ -282,21 +282,8 @@
         <div class="row">  
             <div class="ibox-content">   
                 <div class="table-responsive"> 
-                       
-  
-                <asp:GridView ID="dgvdetallecomision" AutoGenerateColumns="false" runat="server" Width="800" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" CssClass="table table-hover dgvdetallecomision">
-                    <Columns>
-                    <asp:BoundField DataField="RCONTROL_TRANSA" HeaderText="RCONTROL_TRANSA"  />
-                    <asp:BoundField DataField="Documento" HeaderText="Documento" />
-                    <asp:BoundField DataField="Inicio" HeaderText="Inicio"  />
-                    <asp:BoundField DataField="Termino" HeaderText="Termino"  />
-                    <asp:BoundField DataField="Motivo" HeaderText="Motivo" />
-                    <asp:BoundField DataField="Tip_Control" HeaderText="Tipo Control" />
-                    <asp:BoundField DataField="Destino" HeaderText="Destino" />
-                    </Columns>           
-                </asp:GridView> 
-                          
-                    </div>
+                  <table id="dgvdetallecomision" class="table table-hover dgvdetallecomision" data-paging="true"></table>
+                </div>
                                                    
             </div>
             <input type="hidden" id="nro_transa" />
@@ -306,16 +293,7 @@
                     <div class="ibox float-e-margins">
                       
                         <div class="ibox-content">
-
-                            <asp:GridView ID="dgvdetallecomision_hijo" AutoGenerateColumns="False" runat="server" Width="400px" CellPadding="2" DataSourceID="SqlDataSource2" ForeColor="#333333" GridLines="None" CssClass="table table-hover dgvdetallecomision_hijo">
-                    <Columns>
-                    <asp:BoundField DataField="Fecha_Hora" HeaderText="Fecha y Hora" />
-                    <asp:BoundField DataField="Tipo_Registro" HeaderText="Tipo Registro" />
-                    <asp:BoundField DataField="Tipo_Control" HeaderText="Tipo Control"  />
-                    <asp:BoundField DataField="Observacion" HeaderText="Observacion" />
-                    </Columns>           
-                </asp:GridView> 
-
+                            <table id="dgvdetallecomision_hijo" class="table table-hover dgvdetallecomision_hijo" data-paging="true"></table>
                         </div>
                     </div>
                 </div>
@@ -341,16 +319,8 @@
                 </div>
                 
             </div>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DIREJPER-CPVConnectionString %>" SelectCommand="exec [sp_listado_maspe] @mssql = 4,@maspe_carne ='00168872'">
-            <SelectParameters>
-                <asp:Parameter DefaultValue="1" Name="mssql" />
-            </SelectParameters>
-        </asp:SqlDataSource>
-           <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:DIREJPER-CPVConnectionString %>" SelectCommand="exec [sp_listado_maspe] @mssql = 5,@RCONTROL_TRANSA ='449427'">
-            <SelectParameters>
-                <asp:Parameter DefaultValue="1" Name="mssql" />
-            </SelectParameters>
-        </asp:SqlDataSource>
+       
+          
         </div>
      
     </form>

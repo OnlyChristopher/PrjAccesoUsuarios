@@ -53,19 +53,7 @@
         </div>
         <div class="row">  
             <div class="ibox-content">   
-                <div class="table-responsive">   
-               <%-- <asp:GridView ID="dgvcomisiones" AutoGenerateColumns="false" runat="server" Width="1000" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" CssClass="dgvcomisiones table table-hover" data-paging="true">
-                    <Columns>
-                        <asp:BoundField DataField="CIP" HeaderText="CIP" />
-                        <asp:BoundField DataField="GRADO" HeaderText="GRADO" />
-                        <asp:BoundField DataField="SITUACION" HeaderText="SITUACION"  />
-                        <asp:BoundField DataField="APELLIDO_PATERNO" HeaderText="APELLIDO PATERNO"  />
-                        <asp:BoundField DataField="APELLIDO_MATERNO" HeaderText="APELLIDO MATERNO" />
-                        <asp:BoundField DataField="NOMBRES" HeaderText="NOMBRES" />
-                        <asp:BoundField DataField="COD_UNIDAD" HeaderText="UNIDAD" />
-                    </Columns>                  
-                
-                </asp:GridView>    --%>
+                <div class="table-responsive"> 
                     <table id="dgvcomisiones" class="table table-hover dgvcomisiones" data-paging="true"></table>
                     </div>
               
@@ -75,12 +63,7 @@
                                            
             </div>
         </div>                      
-        <%--<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DIREJPER-CPVConnectionString %>" SelectCommand="exec [sp_listado_maspe] @mssql = 1 ">
-            <SelectParameters>
-                <asp:Parameter DefaultValue="1" Name="mssql" />
-            </SelectParameters>
-        </asp:SqlDataSource>--%>
-             <div class="row opciones_dgvcomisiones">              
+           <div class="row opciones_dgvcomisiones">              
                     <div class="ibox-title">                                  
                         <table>
                             <tr>
@@ -104,7 +87,7 @@
 
     
     </form>
-     <script type="text/javascript" src="http://fooplugins.github.io/FooTable/compiled/footable.js"></script>
+     <script type="text/javascript" src="../js/footable.js"></script>
 
 </body>
 </html>

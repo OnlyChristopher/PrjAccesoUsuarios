@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
 
-    $('.dgvcomisiones').hide();
+    //$('.dgvcomisiones').hide();
     $('.opciones_dgvcomisiones').hide();
 
        
@@ -26,35 +26,31 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: OnSuccess
-            });
-         
+            });         
         }
-
       
     });
 
     
     function OnSuccess(response) {       
 
-        $('.dgvcomisiones').find('tr:not(:has(th))').remove();
-
-        selectionrow();
-
+        $('.dgvcomisiones').find('tbody:not(:has(thead))').remove();
+      
         limpiar();
             
-        $('.dgvcomisiones').show();
+        //$('.dgvcomisiones').show();
         $('.opciones_dgvcomisiones').show();
-
+       
         var obj = jQuery.parseJSON(response.d);
         drawTable(obj);
 
         var columns =[
                         { "name": "CIP", "title": "CIP", "breakpoints": "xs sm", "style": { "width": 80, "maxWidth": 80 } },
-                        { "name": "GRADO", "title": "GRADO" },
-                        { "name": "SITUACION", "title": "SITUACION" },
-                        { "name": "APELLIDO_PATERNO", "title": "APELLIDO PATERNO" },
-                        { "name": "APELLIDO_MATERNO", "title": "APELLIDO MATERNO", "breakpoints": "xs sm", "style": { "maxWidth": 200, "overflow": "hidden", "textOverflow": "ellipsis", "wordBreak": "keep-all", "whiteSpace": "nowrap" } },
-                        { "name": "NOMBRES", "title": "NOMBRES", "type": "date", "breakpoints": "xs sm md"},
+                        { "name": "GRADO", "title": "GRADO", "style": { "width": 100, "maxWidth": 100 } },
+                        { "name": "SITUACION", "title": "SITUACION", "style": { "width": 90, "maxWidth": 90} },
+                        { "name": "APELLIDO_PATERNO", "title": "APELLIDO PATERNO", "style": { "width": 120, "maxWidth": 120 } },
+                        { "name": "APELLIDO_MATERNO", "title": "APELLIDO MATERNO", "breakpoints": "xs sm", "style": { "width": 120, "maxWidth": 120, "overflow": "hidden", "textOverflow": "ellipsis", "wordBreak": "keep-all", "whiteSpace": "nowrap" } },
+                        { "name": "NOMBRES", "title": "NOMBRES", "type": "date", "breakpoints": "xs sm md", "style": { "width": 150, "maxWidth": 150 } },
                         { "name": "COD_UNIDAD", "title": "UNIDAD", "breakpoints": "xs sm md" }
                     ]
       
@@ -62,13 +58,18 @@
             "columns": columns,
             "rows": obj
         });
-    }
 
-        
+
+        selectionrow();
+
+        $('.dgvcomisiones tfoot .footable-paging').click(function () {
+            selectionrow();
+        })
+
+    }
+         
     function drawTable(data) {
-        for (var i = 0; i < data.length; i++) {
-                drawRow(data[i]);
-        }
+       
         var ncount = "";
             if (data.length > 1)
             {
@@ -78,26 +79,13 @@
             }
 
             $('#countreg span').text(data.length + ncount)
-            $('#countreg span').fadeIn(500);
-
-            selectionrow();
+            $('#countreg span').fadeIn(500);            
         }
-
-    function drawRow(rowData) {           
-            var row = $("<tr />")
-            $("#dgvcomisiones").append(row); //this will append tr element to table... keep its reference for a while since we will add cels into it
-            row.append($("<td>" + rowData.CIP + "</td>"));
-            row.append($("<td>" + rowData.GRADO + "</td>"));
-            row.append($("<td>" + rowData.SITUACION + "</td>"));
-            row.append($("<td>" + rowData.APELLIDO_PATERNO + "</td>"));
-            row.append($("<td>" + rowData.APELLIDO_MATERNO + "</td>"));
-            row.append($("<td>" + rowData.NOMBRES + "</td>"));
-            row.append($("<td>" + rowData.COD_UNIDAD + "</td>"));
-    }
-
+      
+  
  
     function selectionrow() {
-        $('.dgvcomisiones').find('tr:not(:has(th))').click(function () {
+        $('.dgvcomisiones').find('tbody tr:not(:has(th))').click(function () {
             var td = $(this).children('td');
             for (var i = 0; i < 1; ++i) {
                 $('#hdcip').val(td[i].innerText);
@@ -107,15 +95,15 @@
             $(".background-tr").removeClass("background-tr");
 
             $(this).children("td").addClass("background-tr");
-            $(this).children("tr").addClass("background-tr");
         });
     }
 
+ 
     /*Limpiamos los textbox*/
     function limpiar() {
         $('input[type=text]').val("");
-
     }
+
 
     /************************* 
         Detalle de Movimientos 
@@ -150,48 +138,51 @@
 
 
     function jMovimiento(response) {
-        $('.dgvdetallecomision').find('tr:not(:has(th))').remove();      
+        $('.dgvdetallecomision').find('tr:not(:has(thead))').remove();      
 
-        var obj = jQuery.parseJSON(response.d);       
+        var obj = jQuery.parseJSON(response.d);
 
-        for (var i = 0; i < obj.length; i++) {
+        var columns = [
+                   { "name": "RCONTROL_TRANSA", "title": "RCONTROL_TRANSA", "style": { "width": 80, "maxWidth": 80 } ,"visible" : false},
+                   { "name": "Documento", "title": "Documento", "style": { "width": 250, "maxWidth": 250 } },
+                   { "name": "Inicio", "title": "Inicio","type" : "date", "style": { "width": 90, "maxWidth": 90 } },
+                   { "name": "Termino", "title": "Termino", "type": "date", "style": { "width": 90, "maxWidth": 90 } },
+                   { "name": "Motivo", "title": "Motivo", "style": { "width": 90, "maxWidth": 90, "overflow": "hidden", "textOverflow": "ellipsis", "wordBreak": "keep-all", "whiteSpace": "nowrap" } },
+                   { "name": "Tip_Control", "title": "Tipo Control", "style": { "width": 100, "maxWidth": 100 } },
+                   { "name": "Destino", "title": "Destino" }
+        ]
 
-            var rowData = obj[i];    
+        $('.dgvdetallecomision').footable({
+            "columns": columns,
+            "rows": obj
+        });
+       
 
-        var row = $("<tr />")
-            $(".dgvdetallecomision").append(row); //this will append tr element to table... keep its reference for a while since we will add cels into it
-            row.append($("<td>" + rowData.RCONTROL_TRANSA + "</td>"));
-            row.append($("<td>" + rowData.Documento + "</td>"));
-            row.append($("<td>" + rowData.Inicio + "</td>"));
-            row.append($("<td>" + rowData.Termino + "</td>"));
-            row.append($("<td>" + rowData.Motivo + "</td>"));
-            row.append($("<td>" + rowData.Tip_Control + "</td>"));
-            row.append($("<td>" + rowData.Destino + "</td>"));
-        }
+        $('.dgvdetallecomision_hijo').find('tbody tr:not(:has(thead))').remove();
 
-        $('.dgvdetallecomision_hijo').find('tr:not(:has(th))').remove();
-
-        ocultarcolumna('dgvdetallecomision', 1);
-        ocultarcolumna('dgvdetallecomision_hijo', 4);
-
+  
         selectionrow_detalle();
+
+        $('.dgvdetallecomision tfoot .footable-paging').click(function () {
+            selectionrow_detalle();
+        })
+
+
     }
 
     function selectionrow_detalle() {
-        $('.dgvdetallecomision').find('tr:not(:has(th))').click(function () {
+        $('.dgvdetallecomision').find('tbody tr:not(:has(th))').click(function () {
             var td = $(this).children('td');
             for (var i = 0; i < 1; ++i) {
                 $('#nro_transa').val(td[i].innerText);
                 //console.log(i + ': ' + td[i].innerText);
             }
-
             $(".background-detalle-tr").removeClass("background-detalle-tr");
 
             $(this).children("td").addClass("background-detalle-tr");
-            $(this).children("tr").addClass("background-detalle-tr");
-
+            
+            $('#txtobservacion').val("");
             Getdgvdetallecomision_hijo($('#nro_transa').val());
-
         });
 
         
@@ -213,51 +204,41 @@
 
 
     function jMovimientoDetalle(response) {
-        $('.dgvdetallecomision_hijo').find('tr:not(:has(th))').remove();
+        $('.dgvdetallecomision_hijo').find('tbody tr:not(:has(thead))').remove();
 
         var obj = jQuery.parseJSON(response.d);
+        
+        var columns = [
+                 { "name": "Fecha_Hora", "title": "Fecha y Hora", "style": { "width": 100, "maxWidth": 100 } },
+                 { "name": "Tipo_Registro", "title": "Tipo Registro", "style": { "width": 100, "maxWidth": 100 } },
+                 { "name": "Tipo_Control", "title": "Tipo Control", "type": "date", "style": { "width": 100, "maxWidth": 100 } },
+                 { "name": "Observacion", "title": "Observacion", "type": "date", "style": { "width": 90, "maxWidth": 90 }, "visible": false },
+        ]
 
-        for (var i = 0; i < obj.length; i++) {
-
-            var rowData = obj[i];
-
-            var row = $("<tr />")
-            $(".dgvdetallecomision_hijo").append(row); //this will append tr element to table... keep its reference for a while since we will add cels into it
-            row.append($("<td>" + rowData.Fecha_Hora + "</td>"));
-            row.append($("<td>" + rowData.Tipo_Registro + "</td>"));
-            row.append($("<td>" + rowData.Tipo_Control + "</td>"));
-            row.append($("<td>" + rowData.Observacion + "</td>"));
-        }
-
+        $('.dgvdetallecomision_hijo').footable({
+            "columns": columns,
+            "rows": obj
+        });
         selectionrow_print()
-        ocultarcolumna('dgvdetallecomision_hijo', 4);
-
     }
 
 
-
-
     function selectionrow_print() {
-        $('#dgvdetallecomision_hijo').find('tr:not(:has(th))').click(function () {
+        $('.dgvdetallecomision_hijo').find('tbody tr:not(:has(th))').click(function () {
             var td = $(this).children('td');
             for (var i = 3; i < 4; ++i) {
                 //console.log(i + ': ' + td[i].innerText);
                 $('#txtobservacion').val(td[i].innerText);
             }
         });
-    }
+    }  
 
-  
-    function ocultarcolumna(grilla, columna) {
-        var i = columna;
-        $('#' + grilla + '').find('td:nth-child(' + [i] + '),th:nth-child(' + [i] + ')').hide();
-        //console.log($('#' + grilla + '').find('td:nth-child(' + [i] + '),th:nth-child(' + [i] + ')'));
-    }
 
 
     /** Limpiar variable  .img-profile **/
     $('[data-dismiss]').click(function () {
         $('.img-profile').attr("src", "");
+        $('#txtobservacion').val("");
     });
 
 
