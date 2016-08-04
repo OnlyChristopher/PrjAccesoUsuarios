@@ -34,7 +34,7 @@
     
     function OnSuccess(response) {       
 
-        $('.dgvcomisiones').find('tbody:not(:has(thead))').remove();
+        $('.dgvcomisiones').find('tbody:not(:has(thead))').html('');
       
         limpiar();
             
@@ -53,7 +53,7 @@
                         { "name": "NOMBRES", "title": "NOMBRES", "type": "date", "breakpoints": "xs sm md", "style": { "width": 150, "maxWidth": 150 } },
                         { "name": "COD_UNIDAD", "title": "UNIDAD", "breakpoints": "xs sm md" }
                     ]
-      
+  
         $('.dgvcomisiones').footable({
             "columns": columns,
             "rows": obj
@@ -242,6 +242,11 @@
     });
 
 
-  
+ 
     
 });
+
+
+window.onresize = function(event) {
+    data_debug.data.self.breakpoints.check();
+    };

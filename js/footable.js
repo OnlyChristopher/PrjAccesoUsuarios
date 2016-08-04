@@ -1,4 +1,6 @@
-﻿/*
+﻿
+var data_debug;
+/*
 * FooTable v3 - FooTable is a jQuery plugin that aims to make HTML tables on smaller devices look awesome.
 * @version 3.0.10
 * @link http://fooplugins.com
@@ -2132,6 +2134,30 @@
 		 * @fires FooTable.Table#"resize.ft.table"
 		 */
         _onWindowResize: function (e) {
+
+            /*
+            raise: function (eventName, args) {
+            var self = this,
+				debug = F.__debug__ && (F.is.emptyArray(F.__debug_options__.events) || F.arr.any(F.__debug_options__.events, function (name) { return F.str.contains(eventName, name); }));
+            args = args || [];
+            args.unshift(this);
+            return $.Deferred(function (d) {
+                var evt = $.Event(eventName);
+                if (self.o.stopPropagation == true) {
+                    self.$el.one(eventName, function (e) { e.stopPropagation(); });
+                }
+                if (debug) console.log('FooTable:' + eventName + ': ', args);
+                self.$el.trigger(evt, args);
+                if (evt.isDefaultPrevented()) {
+                    if (debug) console.log('FooTable: default prevented for the "' + eventName + '" event.');
+                    d.reject(evt);
+                } else d.resolve(evt);
+            });
+        },
+            */
+            data_debug = e;
+            //e.data.self.breakpoints.check()
+            /*
             var self = e.data.self;
             if (self._resizeTimeout != null) { clearTimeout(self._resizeTimeout); }
             self._resizeTimeout = setTimeout(function () {
@@ -2142,10 +2168,10 @@
 				 * @param {jQuery.Event} e - The jQuery.Event object for the event.
 				 * @param {FooTable.Table} ft - The instance of the plugin raising the event.
 				 */
-                self.raise('resize.ft.table').then(function () {
+               /* self.raise('resize.ft.table').then(function () {
                     self.breakpoints.check();
                 });
-            }, 300);
+            }, 300);*/
         }
     });
 
