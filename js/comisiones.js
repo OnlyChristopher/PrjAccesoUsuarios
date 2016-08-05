@@ -12,7 +12,6 @@
         if (key == 13) {
             $('#btnbuscar').click();
         }
-
     }); 
 
     $('#btnbuscar').click(function () {
@@ -111,24 +110,11 @@
 
     $('#btndetalle').click(function () {
         if ($('#hdcip').val() != "") {
+
+            $("#md_detalle .modal-content").load('Main/Comisiones_detalle.aspx');
+
             $('#md_detalle').modal('show');
-          
 
-            selectionrow_print();
-
-            var valor = $('#hdcip').val();
-            var img = $('.img-profile');
-            img.attr("src", "images/FOTOS_PRUEBAS/" + valor + ".jpg");
-
-
-            $.ajax({
-                type: "POST",
-                url: "Main/Comisiones.aspx/GetMovimientos",
-                data: '{maspe_carne: "' + $("#hdcip").val() + '" }',
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: jMovimiento
-            });
             
         } else {
             toastr.success('Seleccione un registro ...', 'Comisiones');
@@ -137,113 +123,8 @@
     });
 
 
-    function jMovimiento(response) {
-        $('.dgvdetallecomision').find('tr:not(:has(thead))').remove();      
-
-        var obj = jQuery.parseJSON(response.d);
-
-        var columns = [
-                   { "name": "RCONTROL_TRANSA", "title": "RCONTROL_TRANSA", "style": { "width": 80, "maxWidth": 80 } ,"visible" : false},
-                   { "name": "Documento", "title": "Documento", "style": { "width": 250, "maxWidth": 250 } },
-                   { "name": "Inicio", "title": "Inicio","type" : "date", "style": { "width": 90, "maxWidth": 90 } },
-                   { "name": "Termino", "title": "Termino", "type": "date", "style": { "width": 90, "maxWidth": 90 } },
-                   { "name": "Motivo", "title": "Motivo", "style": { "width": 90, "maxWidth": 90, "overflow": "hidden", "textOverflow": "ellipsis", "wordBreak": "keep-all", "whiteSpace": "nowrap" } },
-                   { "name": "Tip_Control", "title": "Tipo Control", "style": { "width": 100, "maxWidth": 100 } },
-                   { "name": "Destino", "title": "Destino" }
-        ]
-
-        $('.dgvdetallecomision').footable({
-            "columns": columns,
-            "rows": obj
-        });
-       
-
-        $('.dgvdetallecomision_hijo').find('tbody tr:not(:has(thead))').remove();
-
-  
-        selectionrow_detalle();
-
-        $('.dgvdetallecomision tfoot .footable-paging').click(function () {
-            selectionrow_detalle();
-        })
-
-
-    }
-
-    function selectionrow_detalle() {
-        $('.dgvdetallecomision').find('tbody tr:not(:has(th))').click(function () {
-            var td = $(this).children('td');
-            for (var i = 0; i < 1; ++i) {
-                $('#nro_transa').val(td[i].innerText);
-                //console.log(i + ': ' + td[i].innerText);
-            }
-            $(".background-detalle-tr").removeClass("background-detalle-tr");
-
-            $(this).children("td").addClass("background-detalle-tr");
-            
-            $('#txtobservacion').val("");
-            Getdgvdetallecomision_hijo($('#nro_transa').val());
-        });
-
-        
-    }
-
-    function Getdgvdetallecomision_hijo(valor) {        
-
-        $.ajax({
-            type: "POST",
-            url: "Main/Comisiones.aspx/GetDetallesMovimientos",
-            data: '{rcontrol_transa: "' + valor + '" }',
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: jMovimientoDetalle
-        });
-    }
-
-
-
-
-    function jMovimientoDetalle(response) {
-        $('.dgvdetallecomision_hijo').find('tbody tr:not(:has(thead))').remove();
-
-        var obj = jQuery.parseJSON(response.d);
-        
-        var columns = [
-                 { "name": "Fecha_Hora", "title": "Fecha y Hora", "style": { "width": 100, "maxWidth": 100 } },
-                 { "name": "Tipo_Registro", "title": "Tipo Registro", "style": { "width": 100, "maxWidth": 100 } },
-                 { "name": "Tipo_Control", "title": "Tipo Control", "type": "date", "style": { "width": 100, "maxWidth": 100 } },
-                 { "name": "Observacion", "title": "Observacion", "type": "date", "style": { "width": 90, "maxWidth": 90 }, "visible": false },
-        ]
-
-        $('.dgvdetallecomision_hijo').footable({
-            "columns": columns,
-            "rows": obj
-        });
-        selectionrow_print()
-    }
-
-
-    function selectionrow_print() {
-        $('.dgvdetallecomision_hijo').find('tbody tr:not(:has(th))').click(function () {
-            var td = $(this).children('td');
-            for (var i = 3; i < 4; ++i) {
-                //console.log(i + ': ' + td[i].innerText);
-                $('#txtobservacion').val(td[i].innerText);
-            }
-        });
-    }  
-
-
-
-    /** Limpiar variable  .img-profile **/
-    $('[data-dismiss]').click(function () {
-        $('.img-profile').attr("src", "");
-        $('#txtobservacion').val("");
-    });
-
-
- 
     
+
 });
 
 

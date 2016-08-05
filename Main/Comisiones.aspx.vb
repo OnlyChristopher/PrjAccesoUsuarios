@@ -4,12 +4,10 @@ Imports System.Configuration
 Imports System.Web.Script.Serialization
 Imports System.Collections.Generic
 
+
 Partial Class Main_Comisiones
+
     Inherits System.Web.UI.Page
-
-    Private Sub Main_Comisiones_Load(sender As Object, e As EventArgs) Handles Me.Load
-
-    End Sub
 
     <System.Web.Services.WebMethod()>
     Public Shared Function GetOficiales(ByVal maspe_carne As String, ByVal ape_pat As String, ByVal ape_mat As String, ByVal nombres As String) As String
@@ -20,11 +18,6 @@ Partial Class Main_Comisiones
         Dim msg As String = ""
         varTablaOfi = ObjOficiales.ListarOficiales(maspe_carne, ape_pat, ape_mat, nombres)
 
-        'If varTablaOfi.Tables(0).Rows.Count > 0 Then
-        '    msg = "XX"
-        'Else
-        '    msg = "No existe datos"
-        'End If
 
         Dim firstTable As DataTable = varTablaOfi.Tables(0)
 
@@ -47,6 +40,8 @@ Partial Class Main_Comisiones
         Dim ObjMovimientos As New Cls_Oficiales
         Dim varTablaMov As DataSet
         Dim msg As String = ""
+
+
         varTablaMov = ObjMovimientos.ListarMovimientos(maspe_carne)
 
         Dim firstTable As DataTable = varTablaMov.Tables(0)

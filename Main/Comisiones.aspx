@@ -37,7 +37,7 @@
                                     <div class="col-md-2">
                                         <label>Apellido Materno</label>
                                         <input type="text" id="txtapemat" name="txtapemat" class="form-control" placeholder="Apellido Materno" />
-                                    </div>go
+                                    </div>
 
                                     <div class="col-md-2">
                                         <label>Nombres</label>

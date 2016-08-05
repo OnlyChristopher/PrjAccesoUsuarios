@@ -252,75 +252,10 @@
     <div class="modal fade" id="md_detalle" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Detalles</h4>
-                </div>
-                <div class="modal-body">
-                 
-                     <div class="col-lg-3">
-                    <div class="m-b-md">
-                            <img alt="image" class="img-circle circle-border img-profile" width="128" height="128" src="" />
-                        </div>
-                         </div>
-                          <div class="col-lg-6">
-                                                     <h2>Datos Personales</h2>
-
-                        <ul class="nav navbar-top-links">
-                            <li style="padding-top:10px;">
-                                <span class="m-r-sm text-muted welcome-message">
-                                    <i class="fa fa-user"></i> : <asp:Label ID="Label1" runat="server" Text="xxxxxxxx"></asp:Label> <asp:Label ID="Label2" runat="server" Text=""></asp:Label><br />
-                                    <i class="fa fa-briefcase"></i> : <asp:Label ID="Label3" runat="server" Text="xxxxx"></asp:Label><br />
-                                    <i class="fa fa-desktop"></i> : <asp:Label ID="Label4" runat="server" Text="xxxxxx"></asp:Label>
-                                </span>
-                            </li>
-
-                        </ul>
-                              </div>
-            
-                        
-        <div class="row">  
-            <div class="ibox-content">   
-                <div class="table-responsive"> 
-                  <table id="dgvdetallecomision" class="table table-hover dgvdetallecomision" data-paging="true"></table>
-                </div>
-                                                   
-            </div>
-            <input type="hidden" id="nro_transa" />
-        </div>  
-                         <div class="row">
-                <div class="col-lg-6">
-                    <div class="ibox float-e-margins">
-                      
-                        <div class="ibox-content">
-                            <table id="dgvdetallecomision_hijo" class="table table-hover dgvdetallecomision_hijo" data-paging="true"></table>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="ibox float-e-margins">
-      
-                        <div class="ibox-content">
-                            <textarea id="txtobservacion" cols="50" rows="7" runat="server"></textarea>                      
-                        </div>
-                    </div>
-                </div>
-            </div>          
-                                  </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Adicionar</button>
-                    <button type="button" class="btn btn-primary">Modificar</button>
-                    <button type="button" class="btn btn-primary">Eliminar</button>
-                    <button type="button" class="btn btn-primary">Retorno</button>
-                    <button type="button" class="btn btn-primary">Reporte</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                </div>
-                        
                 </div>
                 
             </div>
        
-          
         </div>
      
     </form>
@@ -334,7 +269,7 @@
 <script type="text/javascript" src="js/plugins/pace/pace.min.js"></script>
 
 <!-- jQuery UI -->
-<%--<script type="text/javascript" src="js/plugins/jquery-ui/jquery-ui.min.js"></script>--%>
+<script type="text/javascript" src="js/plugins/jquery-ui/jquery-ui.min.js"></script>
 
 </body>
 </html>

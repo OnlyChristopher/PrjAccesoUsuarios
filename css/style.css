@@ -2809,6 +2809,7 @@ video {
   padding: 30px 15px;
   text-align: center;
 }
+
 .animated.modal.fade .modal-dialog {
   -webkit-transform: none;
   -ms-transform: none;

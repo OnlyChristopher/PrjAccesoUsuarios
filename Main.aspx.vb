@@ -9,7 +9,7 @@ Partial Class Main
     Private Usuario_Id As Integer
     Private Usuario_Seleccionado As Integer
     Private Ip As String = ""
-    Public Event PageIndesChanging As GridViewPageEventHandler
+
 
     Protected Sub form1_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles form1.Load
         Ip = System.Net.Dns.GetHostName

@@ -13,6 +13,9 @@
 
     $('#lbntlice').click(function () {       
         $(".row .content").load('Main/Licencias.aspx');
-    })  
+    })
+
+
+   
 });
 
