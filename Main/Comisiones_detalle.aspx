@@ -25,10 +25,10 @@
                                 
                                     <p> <i class="fa fa-user"></i> CIP : <asp:Label ID="lbldatos1" runat="server" Text=""></asp:Label> </p>
                                     <p><i class="fa fa-briefcase"></i> Unidad : <asp:Label ID="lbldatos2" runat="server" Text=""></asp:Label></p>
-                                    <p><i class="fa fa-desktop"></i> Dirección : <asp:Label ID="lbldatos3" runat="server" Text=""></asp:Label> </p>                     
-                                     <p><i class="fa fa-desktop"></i> Dirección : <asp:Label ID="Label1" runat="server" Text="xxxxxxxxxxxx"></asp:Label> </p>                     
-                                     <p><i class="fa fa-desktop"></i> Dirección : <asp:Label ID="Label2" runat="server" Text="xxxxxxxxxxxx"></asp:Label> </p>
-                                    <p><i class="fa fa-desktop"></i> Dirección : <asp:Label ID="Label3" runat="server" Text="xxxxxxxxxxxx"></asp:Label> </p>
+                                    <p><i class="fa fa-map-marker"></i> Dirección : <asp:Label ID="lbldatos3" runat="server" Text=""></asp:Label> </p>                     
+                                     <p><i class="fa fa-map-marker"></i> Distrito : <asp:Label ID="lbldatos4" runat="server" Text=""></asp:Label> </p>                     
+                                     <p><i class="fa fa-map-marker"></i> Provincia : <asp:Label ID="lbldatos5" runat="server" Text=""></asp:Label> </p>
+                                    <p><i class="fa fa-map-marker"></i> Departamento : <asp:Label ID="lbldatos6" runat="server" Text=""></asp:Label> </p>
                                     </div>
                              
                             
@@ -36,7 +36,7 @@
                     <div class="col-lg-3" style="padding-right:0px;">
                     
                         <div class="well">
-                            <img alt="image" class="img-circle circle-border img-profile"  width="148" height="148" src="" />
+                            <img alt="image" class="img-circle circle-border img-profile"  width="148" height="148" src="images/sin_foto.png" />
                          </div>
                         
                          </div>

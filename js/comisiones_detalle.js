@@ -5,6 +5,7 @@
     $("#txtobservacion").attr('disabled', 'disabled');
     $("#txtobservacion").css('resize', 'none');
     
+   
     
 
     /************************* 
@@ -17,14 +18,22 @@
             selectionrow_print();
 
             var valor = $('#hdcip').val();
-            var img = $('.img-profile');
-            img.attr("src", "images/FOTOS_PRUEBAS/" + valor + ".jpg");
+            var img = $('.img-profile');      
+           
+       
+            var default_url = "images/sin_foto.png";
+            var img_url = "images/FOTOS_PRUEBAS/" + valor + ".jpg";
 
+            img.error(function () {
+                $(this).attr('src', default_url)
+            });
+            img.attr('src', img_url);
 
+       
             $.ajax({
                 type: "POST",
                 url: "Main/Comisiones.aspx/GetMovimientos",
-                data: '{maspe_carne: "' + $("#hdcip").val() + '" }',
+                data: '{maspe_carne: "' + valor + '" }',
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: jMovimiento
@@ -43,7 +52,7 @@
                    { "name": "Documento", "title": "Documento", "style": { "width": 250, "maxWidth": 250 } },
                    { "name": "Inicio", "title": "Inicio","type" : "date", "style": { "width": 90, "maxWidth": 90 } },
                    { "name": "Termino", "title": "Termino", "type": "date", "style": { "width": 90, "maxWidth": 90 } },
-                   { "name": "Motivo", "title": "Motivo", "style": { "width": 90, "maxWidth": 90, "overflow": "hidden", "textOverflow": "ellipsis", "wordBreak": "keep-all", "whiteSpace": "nowrap" } },
+                   { "name": "Motivo", "title": "Motivo", "style": { "width": 100, "maxWidth": 100, "overflow": "hidden", "textOverflow": "ellipsis", "wordBreak": "keep-all", "whiteSpace": "nowrap" } },
                    { "name": "Tip_Control", "title": "Tipo Control", "style": { "width": 100, "maxWidth": 100 } },
                    { "name": "Destino", "title": "Destino" },
                    { "name": "Datos", "title": "Datos","visible" : false }
@@ -63,10 +72,12 @@
             $('#lbldatos1').text(data_array[0]);
             $('#lbldatos2').text(data_array[1]);
             $('#lbldatos3').text(data_array[2]);
+            $('#lbldatos4').text(data_array[3]);
+            $('#lbldatos5').text(data_array[4]);
+            $('#lbldatos6').text(data_array[5]);
 
 
         $('.dgvdetallecomision_hijo').find('tbody tr:not(:has(thead))').remove();
-
   
         selectionrow_detalle();
 
@@ -75,6 +86,8 @@
         })
 
 
+        Getdgvdetallecomision_hijo(tabla_td[0].innerText);
+     
     }
 
     function selectionrow_detalle() {
@@ -148,6 +161,8 @@
     $('[data-dismiss]').click(function () {
         $('.img-profile').attr("src", "");
         $('#txtobservacion').val("");
+        //$('#hdcip').val("");
+        //console.log("xxx");
     });
 
     /* Movilidad al Modal*/

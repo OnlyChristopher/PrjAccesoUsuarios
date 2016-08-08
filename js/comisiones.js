@@ -1,6 +1,9 @@
 ﻿$(document).ready(function () {
 
     //$('.dgvcomisiones').hide();
+
+    var mov;
+
     $('.opciones_dgvcomisiones').hide();
 
        
@@ -16,6 +19,7 @@
 
     $('#btnbuscar').click(function () {
 
+
         if ($("#txtcip").val() != "" || $("#txtapepat").val() != "" || $("#txtapemat").val() != "" || $("#txtnombres").val() != "") {
 
             $.ajax({
@@ -27,7 +31,10 @@
                 success: OnSuccess
             });         
         }
-      
+
+        /* Limpia la variable */
+        $('#hdcip').val("");
+
     });
 
     
@@ -50,7 +57,8 @@
                         { "name": "APELLIDO_PATERNO", "title": "APELLIDO PATERNO", "style": { "width": 120, "maxWidth": 120 } },
                         { "name": "APELLIDO_MATERNO", "title": "APELLIDO MATERNO", "breakpoints": "xs sm", "style": { "width": 120, "maxWidth": 120, "overflow": "hidden", "textOverflow": "ellipsis", "wordBreak": "keep-all", "whiteSpace": "nowrap" } },
                         { "name": "NOMBRES", "title": "NOMBRES", "type": "date", "breakpoints": "xs sm md", "style": { "width": 150, "maxWidth": 150 } },
-                        { "name": "COD_UNIDAD", "title": "UNIDAD", "breakpoints": "xs sm md" }
+                        { "name": "COD_UNIDAD", "title": "UNIDAD", "breakpoints": "xs sm md" },
+                        { "name": "MOVIMIENTO", "title": "MOV.", "breakpoints": "xs sm md", "style": { "width": 50, "maxWidth": 50 } }
                     ]
   
         $('.dgvcomisiones').footable({
@@ -81,22 +89,27 @@
             $('#countreg span').fadeIn(500);            
         }
       
-  
- 
+   
     function selectionrow() {
         $('.dgvcomisiones').find('tbody tr:not(:has(th))').click(function () {
             var td = $(this).children('td');
-            for (var i = 0; i < 1; ++i) {
-                $('#hdcip').val(td[i].innerText);
+            for (var i = 0; i < 8; ++i) {
+                $('#hdcip').val(td[0].innerText);
+
+                mov = td[7].innerText
+
                 //console.log(i + ': ' + td[i].innerText);
             }
 
             $(".background-tr").removeClass("background-tr");
 
             $(this).children("td").addClass("background-tr");
+            
+        }).dblclick(function () {
+            $('#btndetalle').click();;
         });
-    }
 
+    };
  
     /*Limpiamos los textbox*/
     function limpiar() {
@@ -109,21 +122,22 @@
     **************************/
 
     $('#btndetalle').click(function () {
-        if ($('#hdcip').val() != "") {
-
-            $("#md_detalle .modal-content").load('Main/Comisiones_detalle.aspx');
-
-            $('#md_detalle').modal('show');
-
-            
+        if ($('#hdcip').val() != "" && $('#hdcip').val() != "No hay resultados") {
+            if (mov != 0) {
+                $("#md_detalle .modal-content").load('Main/Comisiones_detalle.aspx');
+                $('#md_detalle').modal('show');
+            } else {
+               alert('No tiene Movimientos. Generar Movimiento ...', 'Comisiones');
+                $("#md_detalle .modal-content").load('Main/Comisiones_registro.aspx');
+                $('#md_detalle').modal('show');
+            }            
         } else {
             toastr.success('Seleccione un registro ...', 'Comisiones');
         }
 
     });
 
-
-    
+   
 
 });
 
