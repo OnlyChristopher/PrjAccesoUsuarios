@@ -1,21 +1,14 @@
 ﻿$(document).ready(function () {
 
-   
-       
-    $("#txtobservacion").attr('disabled', 'disabled');
-    $("#txtobservacion").css('resize', 'none');
-    
-   
-    
 
     /************************* 
         Detalle de Movimientos 
     **************************/
-
-
-          
-
-            selectionrow_print();
+       
+    $("#txtobservacion").attr('disabled', 'disabled');
+    $("#txtobservacion").css('resize', 'none');
+    
+     selectionrow_print();
 
             var valor = $('#hdcip').val();
             var img = $('.img-profile');      
@@ -40,8 +33,6 @@
             });
             
    
-
-
     function jMovimiento(response) {
         $('.dgvdetallecomision').find('tr:not(:has(thead))').remove();      
 
@@ -68,7 +59,6 @@
         var tabla_td = tabla.children('td');
         var data = tabla_td[7].innerText;
         var data_array = data.split(',');
-        //console.log(dato_array[0], dato_array[1], dato_array[2]);
             $('#lbldatos1').text(data_array[0]);
             $('#lbldatos2').text(data_array[1]);
             $('#lbldatos3').text(data_array[2]);
@@ -95,7 +85,6 @@
             var td = $(this).children('td');
             for (var i = 0; i < 1; ++i) {
                 $('#nro_transa').val(td[i].innerText);
-                //console.log(i + ': ' + td[i].innerText);
             }
             $(".background-detalle-tr").removeClass("background-detalle-tr");
 
@@ -149,7 +138,6 @@
         $('.dgvdetallecomision_hijo').find('tbody tr:not(:has(th))').click(function () {
             var td = $(this).children('td');
             for (var i = 3; i < 4; ++i) {
-                //console.log(i + ': ' + td[i].innerText);
                 $('#txtobservacion').val(td[i].innerText);
             }
         });
@@ -161,8 +149,6 @@
     $('[data-dismiss]').click(function () {
         $('.img-profile').attr("src", "");
         $('#txtobservacion').val("");
-        //$('#hdcip').val("");
-        //console.log("xxx");
     });
 
     /* Movilidad al Modal*/

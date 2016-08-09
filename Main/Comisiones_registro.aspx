@@ -4,44 +4,74 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-            <%--<script src="../js/comisiones.js"></script>--%> 
+        <script type="text/javascript" src="js/plugins/datapicker/bootstrap-datepicker.js"></script>
+        <script type="text/javascript" src="../js/comisiones_registro.js"></script>
     <title></title>
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="form1" runat="server" autocomplete="off">
     <div>
              <div>
     <div class="modal-header registro">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Detalles</h4>
+                    <h4 class="modal-title" id="myModalLabel">Registro</h4>
                 </div>
-                <div class="modal-body">
-                 <h2>Datos Personales</h2>
-                     <div class="ibox-content">
-                        <div class="col-lg-8">
-                           
-                            
-                            
-                                <div class="well" style="font-size:11px;">
-                                
-                                    <p> <i class="fa fa-user"></i> CIP : <asp:Label ID="lbldatos1" runat="server" Text=""></asp:Label> </p>
-                                    <p><i class="fa fa-briefcase"></i> Unidad : <asp:Label ID="lbldatos2" runat="server" Text=""></asp:Label></p>
-                                    <p><i class="fa fa-map-marker"></i> Dirección : <asp:Label ID="lbldatos3" runat="server" Text=""></asp:Label> </p>                     
-                                     <p><i class="fa fa-map-marker"></i> Distrito : <asp:Label ID="lbldatos4" runat="server" Text=""></asp:Label> </p>                     
-                                     <p><i class="fa fa-map-marker"></i> Provincia : <asp:Label ID="lbldatos5" runat="server" Text=""></asp:Label> </p>
-                                    <p><i class="fa fa-map-marker"></i> Departamento : <asp:Label ID="lbldatos6" runat="server" Text=""></asp:Label> </p>
-                                    </div>
-                             
+                <div class="modal-body">                 
+     <div class="ibox float-e-margins">
+                        <div class="ibox" style="border-bottom:4px solid #e7eaec">
+                            <h4>Documento</h4>
                             
                         </div>
-                    <div class="col-lg-3" style="padding-right:0px;">
-                    
-                        <div class="well">
-                            <img alt="image" class="img-circle circle-border img-profile"  width="148" height="148" src="images/sin_foto.png" />
-                         </div>
-                        
-                         </div>
-        </div>
+                        <div class="col-sm-16">
+                                <div class="row">                                            
+                                    <div class="col-md-2">
+                                        <asp:DropDownList ID="DropDownList1" runat="server"></asp:DropDownList>
+                                    </div>            
+                                    <div class="col-md-2">
+                                        <input type="text" id="txtapepat" name="txtapepat" class="form-control" placeholder="Apellido Paterno" />
+                                    </div> 
+                                    <div class="col-md-2">
+                                        <input type="text" id="txtapemat" name="txtapemat" class="form-control" placeholder="Apellido Materno" />
+                                    </div>
+                                     <div class="col-md-3">
+                                    <div class="form-group" id="data_1">
+                                    <div class="input-group date">
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="03/04/2014">
+                                    </div>
+                                    </div>
+                                         </div>
+                                    <div class="col-md-1">
+                                        <button id="btnbuscar" type="button" class="btn btn-primary">Buscar</button>
+                                    </div>                                               
+                                </div>
+                            </div>
+                    </div>
+                    <div class="ibox float-e-margins">
+                        <div class="ibox" style="border-bottom:4px solid #e7eaec">
+                            <h4>Detalle</h4>
+                            
+                        </div>
+                        <div class="col-sm-16">
+                                <div class="row">                                            
+                                    <div class="col-md-2">
+                                        <asp:DropDownList ID="DropDownList2" runat="server"></asp:DropDownList>
+                                    </div>            
+                                    <div class="col-md-2">
+                                        <input type="text" id="txtapepat" name="txtapepat" class="form-control" placeholder="Apellido Paterno" />
+                                    </div> 
+                                    <div class="col-md-2">
+                                        <input type="text" id="txtapemat" name="txtapemat" class="form-control" placeholder="Apellido Materno" />
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <input type="text" id="txtnombres" name="txtnombres" class="form-control" placeholder="Nombres" />
+                                    </div> 
+                                    <div class="col-md-1">
+                                        <button id="btnbuscar" type="button" class="btn btn-primary">Buscar</button>
+                                    </div>                                               
+                                </div>
+                            </div>
+                    </div>
 
         <div class="row">  
             <div class="ibox-content">   
@@ -83,5 +113,6 @@
     </div>
     </div>
     </form>
+    
 </body>
 </html>

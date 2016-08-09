@@ -10,14 +10,17 @@
     <title>.:: Modulo de Control de Personal - DIREJPER</title>
 
     <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/plugins/datapicker/datepicker3.css" rel="stylesheet"/>
+
     <link href="css/animate.css" rel="stylesheet"/>
     <link href="css/style.css" rel="stylesheet"/>
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet"/>   
     <link href="css/plugins/toastr/toastr.min.css" rel="stylesheet"/>
-
+    
     <script type="text/javascript" src="js/jquery-2.1.1.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript" src="js/plugins/toastr/toastr.min.js"></script>
+    
 </head>
 
 

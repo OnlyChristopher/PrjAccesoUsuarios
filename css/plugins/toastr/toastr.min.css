@@ -48,6 +48,7 @@ button.toast-close-button {
     -webkit-appearance: none
 }
 
+
 .toast-top-center {
     top: 0;
     right: 0;
@@ -66,11 +67,18 @@ button.toast-close-button {
     width: 100%
 }
 
+/* Modificado*/
+/*Se personolizo para centrar la notificacion*/
 .toast-bottom-full-width {
-    bottom: 0;
-    right: 0;
-    width: 100%
+   top: 350px;   
+   margin: 0 auto;  
+   left: 50%;   
+   margin-left: -150px;   
+   width: 20%
+    /*bottom: 0;
+    right: 0;*/
 }
+
 
 .toast-top-left {
     top: 12px;

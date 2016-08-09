@@ -5,14 +5,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head runat="server">
-<%--    <script src="http://code.jquery.com/jquery-1.8.3.js"></script> 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>--%>
     <link rel="stylesheet" href="../css/footable.bootstrap.min.css" />
-
-        <script src="../js/comisiones.js"></script> 
-
-
-
+    <script src="../js/comisiones.js"></script> 
 </head>
 <body>
     <form id="form1" runat="server" class="form-horizontal" style="margin-left:20px;" autocomplete="off">      
@@ -69,7 +63,7 @@
                         <table>
                             <tr>
                                 <td>
-                                    <button type="button" class="btn btn-primary" id="btndetalle" <%--data-toggle="modal" data-target="#myModal"--%>>Detalle</button>&nbsp;&nbsp;
+                                    <button type="button" class="btn btn-primary" id="btndetalle" >Detalle</button>&nbsp;&nbsp;
                                 </td>
                                 <td>                                        
                                     <button type="button" class="btn btn-primary" id="btnreporte">Reporte</button>&nbsp;&nbsp;

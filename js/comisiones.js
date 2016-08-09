@@ -1,7 +1,5 @@
 ﻿$(document).ready(function () {
 
-    //$('.dgvcomisiones').hide();
-
     var mov;
 
     $('.opciones_dgvcomisiones').hide();
@@ -44,7 +42,6 @@
       
         limpiar();
             
-        //$('.dgvcomisiones').show();
         $('.opciones_dgvcomisiones').show();
        
         var obj = jQuery.parseJSON(response.d);
@@ -121,23 +118,32 @@
         Detalle de Movimientos 
     **************************/
 
+  
+
+
     $('#btndetalle').click(function () {
         if ($('#hdcip').val() != "" && $('#hdcip').val() != "No hay resultados") {
             if (mov != 0) {
                 $("#md_detalle .modal-content").load('Main/Comisiones_detalle.aspx');
                 $('#md_detalle').modal('show');
             } else {
-               alert('No tiene Movimientos. Generar Movimiento ...', 'Comisiones');
-                $("#md_detalle .modal-content").load('Main/Comisiones_registro.aspx');
-                $('#md_detalle').modal('show');
+                 toastr.options = {
+                    "closeButton": true,
+                    "positionClass": "toast-bottom-full-width"
+                }
+                 toastr.error('No tiene movimientos. <button id="btnagregart" type="button" class="btn btn-default btn-sm">Generar</button>', 'Comisiones');
+
+                 $('#btnagregart').click(function () {
+                     $("#md_detalle .modal-content").load('Main/Comisiones_registro.aspx');
+                     $('#md_detalle').modal('show');
+                 });
             }            
         } else {
             toastr.success('Seleccione un registro ...', 'Comisiones');
         }
-
     });
 
-   
+  
 
 });
 
