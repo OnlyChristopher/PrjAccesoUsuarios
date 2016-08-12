@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cls_Categorias.vb" />
+    <Compile Include="Cls_Registro.vb" />
     <Compile Include="Cls_Clientes.vb" />
     <Compile Include="Cls_Empresa.vb" />
     <Compile Include="Cls_Encrypta.vb" />
@@ -82,7 +83,6 @@
     <Compile Include="Cls_Productos.vb" />
     <Compile Include="Cls_Proforma.vb" />
     <Compile Include="Cls_Proyectos.vb" />
-    <Compile Include="Cls_Servicio.vb" />
     <Compile Include="Cls_Uusarios_Accesos.vb" />
     <Compile Include="Cls_Validacion.vb" />
     <Compile Include="Cls_Acceso.vb" />
