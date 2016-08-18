@@ -3,15 +3,10 @@ Imports System.Data
 Imports System.Configuration
 Imports System.Web.Script.Serialization
 Imports System.Collections.Generic
-
-
 Partial Class Main_Comisiones
-
     Inherits System.Web.UI.Page
-
     <System.Web.Services.WebMethod()>
     Public Shared Function GetOficiales(ByVal maspe_carne As String, ByVal ape_pat As String, ByVal ape_mat As String, ByVal nombres As String) As String
-
 
         Dim ObjOficiales As New Cls_Oficiales
         Dim varTablaOfi As DataSet

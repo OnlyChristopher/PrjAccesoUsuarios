@@ -26,7 +26,7 @@
                                 <div class="row">
                                                                                 
                                     <div class="col-md-2">
-                                        <asp:DropDownList ID="dptipodoc" CssClass="form-control m-b" runat="server"></asp:DropDownList>
+                                        <asp:DropDownList ID="ddltipodoc" CssClass="form-control m-b" runat="server"></asp:DropDownList>
                                     </div>            
                                     <div class="col-md-2">
                                         <input type="text" id="txtapepat" name="txtapepat" class="form-control" placeholder="Numero" />
@@ -38,7 +38,7 @@
                                     <div class="form-group" id="data_1">
                                         <div class="input-group date">
                                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                            <input type="text" class="form-control"/>
+                                            <input type="text" class="form-control" placeholder="Fecha Doc."/>
                                         </div>
                                     </div>
                                     </div>                                                          
@@ -53,19 +53,16 @@
                         <div class="col-sm-16">
                                 <div class="row">
                                     <div class="col-md-2">
-                                        <asp:DropDownList ID="DropDownList4" runat="server"></asp:DropDownList>
+                                        <asp:DropDownList ID="ddltipomov" CssClass="form-control m-b" runat="server"></asp:DropDownList>
                                     </div>                                              
                                     <div class="col-md-2">
-                                        <asp:DropDownList ID="DropDownList2" runat="server"></asp:DropDownList>
-                                    </div>            
-                                    <div class="col-md-2">
-                                        <input type="text" id="txtapepat" name="txtapepat" class="form-control" placeholder="Apellido Paterno" />
-                                    </div> 
+                                        <asp:DropDownList ID="ddltipcon" CssClass="form-control m-b" runat="server"></asp:DropDownList>
+                                    </div>
                                      <div class="col-md-3">
                                    <div class="form-group" id="data_2">
                                         <div class="input-group date">
                                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                            <input type="text" class="form-control"/>
+                                            <input type="text" class="form-control" placeholder="Fecha Ini."/>
                                         </div>
                                     </div>
                                          </div>
@@ -73,7 +70,7 @@
                                    <div class="form-group" id="data_3">
                                         <div class="input-group date">
                                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                            <input type="text" class="form-control"/>
+                                            <input type="text" class="form-control" placeholder="Fecha Fin."/>
                                         </div>
                                     </div>
                                          </div>
@@ -89,30 +86,32 @@
                         <div class="col-sm-16">
                                 <div class="row">                                            
                                     <div class="col-md-2">
-                                        <asp:DropDownList ID="DropDownList3" runat="server"></asp:DropDownList>
+                                        <asp:DropDownList ID="ddlpais" runat="server" CssClass="form-control m-b">
+                                            <asp:ListItem Text = "PAIS" Value = ""></asp:ListItem>
+                                        </asp:DropDownList>
+
                                     </div>            
                                     <div class="col-md-2">
-                                        <input type="text" id="txtapepat" name="txtapepat" class="form-control" placeholder="Apellido Paterno" />
-                                    </div> 
-                                     <div class="col-md-3">
-                                   <div class="form-group" id="data_2">
-                                        <div class="input-group date">
-                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                            <input type="text" class="form-control"/>
-                                        </div>
-                                    </div>
-                                         </div>
-                                     <div class="col-md-3">
-                                   <div class="form-group" id="data_3">
-                                        <div class="input-group date">
-                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                            <input type="text" class="form-control"/>
-                                        </div>
-                                    </div>
-                                         </div>
-                                    <div class="col-md-1">
+                                        <asp:DropDownList ID="ddldepartamento" runat="server" CssClass="form-control m-b">
+                                            <asp:ListItem Text = "DEPARMENTO" Value = ""></asp:ListItem>
+                                        </asp:DropDownList>
+                                    </div>            
+                                   
+                                     <div class="col-md-2">
+                                        <asp:DropDownList ID="ddlprovincia" runat="server" CssClass="form-control m-b">
+                                            <asp:ListItem Text = "PROVINCIA" Value = ""></asp:ListItem>
+                                        </asp:DropDownList>
+                                    </div>            
+                                   
+                                     <div class="col-md-2">
+                                        <asp:DropDownList ID="ddlciudad" runat="server" CssClass="form-control m-b">
+                                            <asp:ListItem Text = "CIUDAD" Value = ""></asp:ListItem>
+                                        </asp:DropDownList>
+                                    </div>            
+                                
+                                    <%--<div class="col-md-1">
                                         <button id="btnbuscar" type="button" class="btn btn-primary">Buscar</button>
-                                    </div>                                               
+                                    </div>    --%>                                           
                                 </div>
                             </div>
                     </div>
@@ -128,11 +127,7 @@
                               
                                   </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Adicionar</button>
-                    <button type="button" class="btn btn-primary">Modificar</button>
-                    <button type="button" class="btn btn-primary">Eliminar</button>
-                    <button type="button" class="btn btn-primary">Retorno</button>
-                    <button type="button" class="btn btn-primary">Reporte</button>
+                    <button type="button" class="btn btn-primary">Guardar</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                 </div>
     </div>
