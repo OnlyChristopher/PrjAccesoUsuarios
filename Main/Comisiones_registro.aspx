@@ -14,7 +14,7 @@
              <div>
     <div class="modal-header registro">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Registro</h4>
+                    <h4 class="modal-title" id="myModalLabel">Registro - </h4>
                 </div>
                 <div class="modal-body">                 
      <div class="ibox float-e-margins">
@@ -93,7 +93,7 @@
                                     </div>            
                                     <div class="col-md-2">
                                         <asp:DropDownList ID="ddldepartamento" runat="server" CssClass="form-control m-b">
-                                            <asp:ListItem Text = "DEPARMENTO" Value = ""></asp:ListItem>
+                                            <asp:ListItem Text = "DEPARTAMENTO" Value = ""></asp:ListItem>
                                         </asp:DropDownList>
                                     </div>            
                                    
@@ -114,16 +114,35 @@
                                     </div>    --%>                                           
                                 </div>
                             </div>
+                                   <div class="col-sm-16">
+                                <div class="row">                                            
+                                    <div class="col-md-6">
+                                      <input type="text" placeholder="Detalle" class="form-control" />
+                                        
+                                    </div>            
+                                
+                                                                            
+                                </div>
+                            </div>
                     </div>
-        <div class="row">  
-            <div class="ibox-content">   
-                <div class="table-responsive"> 
-                  <table id="dgvdetallecomision" class="table table-hover dgvdetallecomision" data-paging="true"></table>
-                </div>
-                                                   
-            </div>
-            <input type="hidden" id="nro_transa" />
-        </div>  
+                    <div class="ibox float-e-margins">
+                        <div class="ibox" style="border-bottom:4px solid #e7eaec">
+                            <h4>Observación</h4>
+                            
+                        </div>
+                      
+                                   <div class="col-sm-16">
+                                <div class="row">                                            
+                                    <div class="col-md-9">
+                                      <input type="text" placeholder="Observación" class="form-control" />
+                                        
+                                    </div>            
+                                
+                                                                            
+                                </div>
+                            </div>
+                    </div>
+        
                               
                                   </div>
                 <div class="modal-footer">

@@ -1,4 +1,7 @@
-﻿$(document).ready(function (){
+﻿$(document).ready(function () {
+    
+    
+    $(".registro").find(".modal-title").append(cell)
 
     $('#data_1 .input-group.date').datepicker({
         todayBtn: "linked",
@@ -20,7 +23,7 @@
         todayBtn: "linked",
         keyboardNavigation: false,
         forceParse: false,
-        calendarWeeks: true,
+        calendarWeeks: true, 
         autoclose: true
     });
 
@@ -29,12 +32,36 @@
     $('#ddlpais').change(function () {
         if ($(this).val() != '0001') {
             $("#ddldepartamento").attr('disabled', 'disabled');
+            $("#ddldepartamento").empty();
+            $("#ddldepartamento").append('<option value="">DEPARTAMENTO</option>');
+
             $("#ddlprovincia").attr('disabled', 'disabled');
+            $("#ddlprovincia").empty();
+            $("#ddlprovincia").append('<option value="">PROVINCIA</option>');
+
             $("#ddlciudad").attr('disabled', 'disabled');
+            $("#ddlciudad").empty();
+            $("#ddlciudad").append('<option value="">CIUDAD</option>');
         } else {
-            $("#ddldepartamento").removeAttr("disabled")
+            $("#ddldepartamento").empty();
+            $("#ddldepartamento").removeAttr("disabled");
+            $.ajax({
+                type: "POST",
+                url: "Main/Comisiones_registro.aspx/GetDepartamento",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    var obj = jQuery.parseJSON(response.d);
+                    for (var i = 0; i < obj.length; i++) {
+                        var ddl = obj[i];
+                        $("#ddldepartamento").append('<option value="' + ddl.D + '">' + ddl.VALOR + '</option>');
+                    }
+                }
+
+            })
+
             $("#ddlprovincia").removeAttr("disabled");
-            $("#ddlciudad").removeAttr("disabled")
+            $("#ddlciudad").removeAttr("disabled");
         }
 
     })
@@ -44,6 +71,9 @@
     $('#ddldepartamento').change(function () {
 
         $("#ddlprovincia").empty();
+
+        $("#ddlciudad").empty();
+        $("#ddlciudad").append('<option value="">CIUDAD</option>');
 
         var valor = $(this).val();
 

@@ -52,18 +52,11 @@
         obj.DataSource = ds.Tables(0).DefaultView
         ds.Dispose()
     End Sub
-    Public Sub Listado_departamento(ByVal obj As Object)
-        Dim ds As New Data.DataSet
+
+    Public Function Listado_departamento() As DataSet
         SqlTexto = "[sp_listado_maspe] @mssql = 10"
-        ds = ObjRegNeg.ConsultaxParametros(SqlTexto)
-        If ds.Tables(0).Rows.Count > 0 Then
-            obj.enabled = True
-        Else
-            obj.enabled = Not True
-        End If
-        obj.DataSource = ds.Tables(0).DefaultView
-        ds.Dispose()
-    End Sub
+        Return ObjRegNeg.ConsultaxParametros(SqlTexto)
+    End Function
     Public Function Listado_provincia(ByVal d As String) As DataSet
         SqlTexto = "[sp_listado_maspe] @mssql = 11, @departamento='" & d & "'"
         Return ObjRegNeg.ConsultaxParametros(SqlTexto)

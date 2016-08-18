@@ -252,15 +252,11 @@
  
       </div>       
     
-    <div class="modal fade" id="md_detalle" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                </div>
-                
-            </div>
-       
-        </div>
-     
+        <div class="modal fade" id="md_detalle" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content"></div>                
+            </div>       
+        </div>     
     </form>
 
 <script type="text/javascript" src="js/jquery-2.1.1.js"></script>

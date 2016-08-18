@@ -1,7 +1,8 @@
 ﻿$(document).ready(function () {
 
     var mov;
-
+    var datoscell;
+    
     $('.opciones_dgvcomisiones').hide();
 
        
@@ -94,6 +95,7 @@
                 $('#hdcip').val(td[0].innerText);
 
                 mov = td[7].innerText
+                cell = td[0].innerText + " - " + td[1].innerText + " - " + td[3].innerText + " " + td[4].innerText + " " + td[5].innerText
 
                 //console.log(i + ': ' + td[i].innerText);
             }
