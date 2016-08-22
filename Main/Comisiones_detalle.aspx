@@ -5,6 +5,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <script src="../js/comisiones_detalle.js"></script> 
+    
+   
     <title></title>
 </head>
 <body>
@@ -47,7 +49,7 @@
                 </div>
                                                    
             </div>
-            <input type="hidden" id="nro_transa" runat="server" />
+            <input type="hidden" id="nro_transa" runat="server" />            
         </div>  
                          <div class="row">
                 <div class="col-lg-7">
@@ -69,12 +71,11 @@
                 </div>
             </div>          
                                   </div>
-                <div class="modal-footer">
+                <div class="modal-footer">                    
                     <button type="button" class="btn btn-primary">Adicionar</button>
                     <button type="button" class="btn btn-primary">Modificar</button>
                     <button type="button" class="btn btn-primary">Eliminar</button>
-                    <button type="button" class="btn btn-primary">Retorno</button>
-                    <button type="button" class="btn btn-primary">Reporte</button>
+                    <button id="btnreportedetallado" type="button" class="btn btn-primary">Reporte</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                 </div>
     </div>
