@@ -65,4 +65,9 @@
         SqlTexto = "[sp_listado_maspe] @mssql = 12, @departamento='" & d & "', @provincia='" & p & "'"
         Return ObjRegNeg.ConsultaxParametros(SqlTexto)
     End Function
+    Public Function Rpt_Movimientos(ByVal maspe_carne As String, ByVal rcontrol_transa As String) As DataTable
+        SqlTexto = "[sp_listado_maspe] @mssql = 13, @maspe_carne='" & maspe_carne & "', @RCONTROL_TRANSA='" & rcontrol_transa & "'"
+        Dim TablaRpt As DataTable = ObjRegNeg.ConsultaxParametros(SqlTexto).Tables(0)
+        Return TablaRpt
+    End Function
 End Class

@@ -30,8 +30,6 @@
                                      <p><i class="fa fa-map-marker"></i> Provincia : <asp:Label ID="lbldatos5" runat="server" Text=""></asp:Label> </p>
                                     <p><i class="fa fa-map-marker"></i> Departamento : <asp:Label ID="lbldatos6" runat="server" Text=""></asp:Label> </p>
                                     </div>
-                             
-                            
                         </div>
                     <div class="col-lg-3" style="padding-right:0px;">
                     
@@ -49,7 +47,7 @@
                 </div>
                                                    
             </div>
-            <input type="hidden" id="nro_transa" />
+            <input type="hidden" id="nro_transa" runat="server" />
         </div>  
                          <div class="row">
                 <div class="col-lg-7">
