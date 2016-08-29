@@ -50,7 +50,7 @@
             <div class="ibox-content">   
                 <div class="table-responsive"> 
                     <table id="dgvcomisiones" class="table table-hover dgvcomisiones" data-paging="true"></table>
-                    </div>
+                </div>
               
                 <div id="countreg">
                     <span class="badge badge-warning" style="padding:8px;display:none;"></span>

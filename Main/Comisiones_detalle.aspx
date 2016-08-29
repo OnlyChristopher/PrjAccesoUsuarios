@@ -72,7 +72,7 @@
             </div>          
                                   </div>
                 <div class="modal-footer">                    
-                    <button type="button" class="btn btn-primary">Adicionar</button>
+                    <button id="btnadicionar" type="button" class="btn btn-primary">Adicionar</button>
                     <button type="button" class="btn btn-primary">Modificar</button>
                     <button type="button" class="btn btn-primary">Eliminar</button>
                     <button id="btnreportedetallado" type="button" class="btn btn-primary">Reporte</button>

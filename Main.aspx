@@ -251,12 +251,18 @@
       </div>
  
       </div>       
-    <!-- MODAL -->
+    <!-- MODAL DETALLE-->
         <div class="modal fade" id="md_detalle" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content"></div>                
             </div>       
-        </div> 
+        </div>
+    <!-- MODAL REGISTRO-->
+        <div class="modal fade" id="md_registro" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content"></div>                
+            </div>       
+        </div>     
     <!-- MODAL FULLSCREEN --> 
      <div class="modal modal-fullscreen fade" id="mdrptcontent" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
             <div class="modal-dialog modal-lg" role="document">

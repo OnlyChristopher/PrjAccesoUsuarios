@@ -29,6 +29,23 @@
 
     $(".ibox").css('margin-bottom', '10px');
 
+
+    $('#btnguardar_comireg').click(function () {
+        if ($('#ddltipodoc').val() == "0000") {
+            alert('Seleccione un Tipo de Documento')
+            $('#ddltipodoc').focus();
+        }
+
+        if ($('#txtnrodoc').val() == "") {
+            alert('Ingrese Nro. Documento')
+            $('#txtnrodoc').focus();
+        }
+
+    })
+
+
+
+
     $('#ddlpais').change(function () {
         if ($(this).val() != '0001') {
             $("#ddldepartamento").attr('disabled', 'disabled');
@@ -120,12 +137,15 @@
     });
 
 
-
-
-
     /* Movilidad al Modal*/
-    $("#md_detalle").draggable({
+    $("#md_registro").draggable({
         handle: ".modal-header"
     });
 
+
+    $('#md_registro').on('hidden.bs.modal', function () {
+        if ($('.modal:visible').length) {
+            $('body').addClass('modal-open');
+        }
+    });
 });

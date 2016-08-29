@@ -13,7 +13,10 @@
     $('#mdrptcontent .modal-body').append('<object type="application/pdf" data="' + pdf_link + '" width="100%" height="700">No Support</object>');
     
            
-  
-
+    $('#mdrptcontent').on('hidden.bs.modal', function () {
+        if ($('.modal:visible').length) {
+            $('body').addClass('modal-open');
+        }
+    });
 
 });

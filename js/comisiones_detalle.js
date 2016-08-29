@@ -1,5 +1,6 @@
 ﻿$(document).ready(function () {
 
+  
 
     /************************* 
         Detalle de Movimientos 
@@ -164,6 +165,11 @@
         
     });
 
+    $('#btnadicionar').click(function () {
+        $("#md_registro .modal-content").load('Main/Comisiones_registro.aspx');
+        $('#md_registro').modal('show');
+    })
+
 
     /** Limpiar variable  .img-profile **/
     $('[data-dismiss]').click(function () {
@@ -176,6 +182,7 @@
         handle: ".modal-header"
     });
 
+  
 
 });
 

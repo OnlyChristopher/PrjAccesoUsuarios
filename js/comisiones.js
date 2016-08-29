@@ -136,8 +136,8 @@
                  toastr.error('No tiene movimientos. <button id="btnagregart" type="button" class="btn btn-default btn-sm">Generar</button>', 'Comisiones');
 
                  $('#btnagregart').click(function () {
-                     $("#md_detalle .modal-content").load('Main/Comisiones_registro.aspx');
-                     $('#md_detalle').modal('show');
+                     $("#md_registro .modal-content").load('Main/Comisiones_registro.aspx');
+                     $('#md_registro').modal('show');
                  });
             }            
         } else {

@@ -4,7 +4,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+        <script src="../js/vacaciones.js"></script> 
+
 </head>
 <body>
     <form id="form1" runat="server" class="form-horizontal" style="margin-left:20px;">
@@ -46,18 +47,18 @@
         </div>
             <div class="row">  
                 <div class="ibox-content">      
-        <asp:GridView ID="dgvcomisiones" runat="server" Width="1000" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" CssClass="table table-hover">
-           
-        </asp:GridView>
+                 <div class="table-responsive"> 
+                    <table id="dgvvacaciones" class="table table-hover dgvvacaciones" data-paging="true"></table>
+                </div>
+              
+                <div id="countreg">
+                    <span class="badge badge-warning" style="padding:8px;display:none;"></span>
+                </div>   
                </div>
                </div>
                       
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DIREJPER-CPVConnectionString %>" SelectCommand="exec [sp_listado_maspe] @mssql = 1 ">
-            <SelectParameters>
-                <asp:Parameter DefaultValue="1" Name="mssql" />
-            </SelectParameters>
-        </asp:SqlDataSource>
-             <div class="row">              
+       
+             <div class="row opciones_dgvvacaciones">              
                     <div class="ibox-title">                                  
                         <table>
                             <tr>

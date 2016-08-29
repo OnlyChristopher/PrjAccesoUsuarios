@@ -25,14 +25,14 @@
                         <div class="col-sm-16">
                                 <div class="row">
                                                                                 
-                                    <div class="col-md-2">
+                                    <div class="col-md-2" title="Tipo de Documento">
                                         <asp:DropDownList ID="ddltipodoc" CssClass="form-control m-b" runat="server"></asp:DropDownList>
                                     </div>            
                                     <div class="col-md-2">
-                                        <input type="text" id="txtapepat" name="txtapepat" class="form-control" placeholder="Numero" />
+                                        <input type="text" id="txtnrodoc" name="txtnrodoc" class="form-control" placeholder="Numero" />
                                     </div> 
                                     <div class="col-md-2">
-                                        <input type="text" id="txtapemat" name="txtapemat" class="form-control" placeholder="Siglas" />
+                                        <input type="text" id="txtsiglasdoc" name="txtsiglasdoc" class="form-control" placeholder="Siglas" />
                                     </div>
                                      <div class="col-md-3">
                                     <div class="form-group" id="data_1">
@@ -146,7 +146,7 @@
                               
                                   </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Guardar</button>
+                    <button id="btnguardar_comireg" type="button" class="btn btn-primary">Guardar</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                 </div>
     </div>
