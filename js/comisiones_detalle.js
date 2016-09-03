@@ -147,7 +147,12 @@
 
 
     $('#btnreportedetallado').click(function () {
+        $("#md_referencia .modal-content").load('Reportes/RptReferencia.aspx');
+        $('#md_referencia').modal('show');
 
+
+
+        /*
         $.ajax({
             type: "POST",
             url: "Main/Comisiones_detalle.aspx/SetVariablesRpt",
@@ -159,14 +164,14 @@
                 $('#mdrptcontent').modal('show');
             }
         });
-
+        */
 
       
         
     });
 
     $('#btnadicionar').click(function () {
-        $("#md_registro .modal-content").load('Main/Comisiones_registro.aspx');
+        $("#md_registro .modal-content").load('Main/Comisiones_registro.aspx?xtipreg=xReg');
         $('#md_registro').modal('show');
     })
 

@@ -11,7 +11,7 @@
 <body>
     <form id="form1" runat="server" autocomplete="off">
     <div>
-             <div>
+            
     <div class="modal-header registro">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel">Registro - </h4>
@@ -105,13 +105,10 @@
                                    
                                      <div class="col-md-2">
                                         <asp:DropDownList ID="ddlciudad" runat="server" CssClass="form-control m-b">
-                                            <asp:ListItem Text = "CIUDAD" Value = ""></asp:ListItem>
+                                           <asp:ListItem Text = "CIUDAD" Value = ""></asp:ListItem>
                                         </asp:DropDownList>
                                     </div>            
-                                
-                                    <%--<div class="col-md-1">
-                                        <button id="btnbuscar" type="button" class="btn btn-primary">Buscar</button>
-                                    </div>    --%>                                           
+                                                                 
                                 </div>
                             </div>
                                    <div class="col-sm-16">
@@ -150,7 +147,7 @@
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                 </div>
     </div>
-    </div>
+    
     </form>
     
 </body>

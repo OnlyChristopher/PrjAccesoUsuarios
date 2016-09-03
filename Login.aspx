@@ -12,10 +12,10 @@
  
 </head>
 <body>
-        
+  
     <h1>POLICÍA NACIONAL DEL PERÚ</h1>
     <h2>MODULO DE CONTROL DE PERSONAL - DIREJPER</h2>
- 
+
     <div class="login-form">
          <div id="logo"></div>
      <div class="form-group ">
@@ -33,9 +33,8 @@
 
 </div>
         
-
-<script src="js/login.js"></script>
  
+<script src="js/login.js"></script>
 
 </body>
      

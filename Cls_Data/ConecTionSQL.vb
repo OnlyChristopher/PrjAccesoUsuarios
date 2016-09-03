@@ -1,5 +1,5 @@
 Public Class ConecTionSQL
-    Protected Shared direction As String = "H:\Proyectos\PrjAccesoUsuarios\Conexion2.cnx"
+    Protected Shared direction As String = "C:\Cnx\Conexion2.cnx"
     Private Shared Cn As String = Coneccion()
     Private Shared ret_Val As String = ""
     Private Shared xPos As String = ""
@@ -43,14 +43,14 @@ Public Class ConecTionSQL
             ds.Tables(0).Columns.Add("password")
             ds.Tables(0).Columns.Add("Integrate")
 
-            Dim dr As Data.DataRow
-            dr = ds.Tables(0).NewRow
-            dr(0) = Encrip("13BDATOS-04", Len("13BDATOS-04"))
-            dr(1) = Encrip("DIREJPER-CPV", Len("DIREJPER-CPV"))
-            dr(2) = Encrip("sa", Len("sa"))
-            dr(3) = Encrip("5348483", Len("5348483"))
-            dr(4) = "False"
-            ds.Tables(0).Rows.Add(dr)
+            'Dim dr As Data.DataRow
+            'dr = ds.Tables(0).NewRow
+            'dr(0) = Encrip("13BDATOS-04", Len("13BDATOS-04"))
+            'dr(1) = Encrip("DIREJPER-CPV", Len("DIREJPER-CPV"))
+            'dr(2) = Encrip("sa", Len("sa"))
+            'dr(3) = Encrip("5348483", Len("5348483"))
+            'dr(4) = "False"
+            'ds.Tables(0).Rows.Add(dr)
             ds.WriteXml(direction)
             If UCase(ds.Tables(0).Rows(0)(4)) = "FALSE" Then
                 cadena = "Data Source=" & Desencrip(ds.Tables(0).Rows(0)(0), Len(ds.Tables(0).Rows(0)(0))) &
