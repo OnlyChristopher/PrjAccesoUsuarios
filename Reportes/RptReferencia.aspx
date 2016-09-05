@@ -38,7 +38,7 @@
                                           <div class="form-group" id="data_fechadoc">
                                         <div class="input-group date">
                                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                            <input type="text" class="form-control" placeholder="Fecha Doc."/>
+                                            <input type="text" id="txtfechareferencia" class="form-control" placeholder="Fecha Doc."/>
                                         </div>
                                     </div>
                                     </div>
@@ -48,7 +48,7 @@
                                     <label class="col-lg-2 control-label">Documento:</label>
 
                                     <div class="col-lg-10">
-                                       <input type="text" placeholder="Documento" class="form-control" />
+                                       <input type="text" id="txtdocreferencia" placeholder="Documento" class="form-control" />
                                        </div>
                                 </div>
                                
@@ -64,7 +64,8 @@
                               
                                   </div>
                 <div class="modal-footer">
-                    <button id="btnguardar_comireg" type="button" class="btn btn-primary">Guardar</button>
+                    <button id="btnimprimir_reporte" type="button" class="btn btn-danger">Reporte</button>
+                    <button id="btnguardar_referencia" type="button" class="btn btn-primary">Guardar</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                 </div>
    
