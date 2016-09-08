@@ -13,6 +13,7 @@ Partial Class Login
 
         If varTablaUsu.Tables(0).Rows.Count = 1 Then
             msg = "Ingreso"
+            HttpContext.Current.Session("OPE_COD") = varTablaUsu.Tables(0).Rows(0)("OPE_COD").ToString.Trim
             HttpContext.Current.Session("OPE_NOMBRES") = varTablaUsu.Tables(0).Rows(0)("OPE_NOMBRES").ToString.Trim
             HttpContext.Current.Session("TGRAD_DES") = varTablaUsu.Tables(0).Rows(0)("TGRAD_DES").ToString.Trim
             HttpContext.Current.Session("TCARGO_DES") = varTablaUsu.Tables(0).Rows(0)("TCARGO_DES").ToString.Trim

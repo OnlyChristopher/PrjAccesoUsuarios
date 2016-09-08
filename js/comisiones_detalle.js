@@ -147,8 +147,8 @@
 
 
     $('#btnreportedetallado').click(function () {
-        $("#md_referencia .modal-content").load('Reportes/RptReferencia.aspx');
-        $('#md_referencia').modal('show');
+        $("#md_referencia .modal-content").load("Reportes/RptReferencia.aspx?rcontrol_trans=" + $("#nro_transa").val());
+        $('#md_referencia').modal("show");
 
 
 

@@ -70,4 +70,15 @@
         Dim TablaRpt As DataTable = ObjRegNeg.ConsultaxParametros(SqlTexto).Tables(0)
         Return TablaRpt
     End Function
+    Public Sub Insertar_DocumentoReferencia(ByVal comision_id As Integer, ByVal fecha_referencia As String, ByVal documento_referencia As String, ByVal ope_registra As String)
+        Try
+            Dim Ip As String = ""
+            Ip = System.Net.Dns.GetHostName
+            SqlTexto = "[Control].[sp_Registro] @mssql=8,@comision_id=" & comision_id & ",@fecha_referencia='" & fecha_referencia & "',@documento_referencia='" & documento_referencia & "',@ope_registra='" & ope_registra & "',@estacion_registra='" & Ip & "'"
+
+            ObjRegNeg.InsertarxActualizaxBorra(SqlTexto)
+        Catch ex As Exception
+            Throw New Exception("Cls_Medidas :" & vbCrLf & ex.Message, ex)
+        End Try
+    End Sub
 End Class

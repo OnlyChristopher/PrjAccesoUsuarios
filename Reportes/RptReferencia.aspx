@@ -68,7 +68,8 @@
                     <button id="btnguardar_referencia" type="button" class="btn btn-primary">Guardar</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                 </div>
-   
+            <asp:TextBox ID="txtrcontrol_transa" runat="server" Visible="False"></asp:TextBox>
     </form>
+    
 </body>
 </html>

@@ -36,9 +36,9 @@
                             <img alt="image"  src="css/img/logo.png" />
                              </span>                          
                             <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                                <li><a href="profile.html">Profile</a></li>
+                                <li><a href="#">Profile</a></li>
                                 <li><a href="contacts.html">Contacts</a></li>
-                                <li><a href="mailbox.html">Mailbox</a></li>
+                                <li><a href="#">Mailbox</a></li>
                                 <li class="divider"></li>
                                 <li><a href="login.html">Logout</a></li>
                             </ul>
@@ -51,22 +51,18 @@
                     <li class="active">
                         <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">Control</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li ><a id="lbntcomi" href="#">Comisiones</a></li>
-                            <li ><a id="lbntvaca" href="#">Vacaciones</a></li>
-                            <li ><a id="lbntperm" href="#">Permisos</a></li>
-                            <li ><a id="lbntlice" href="#">Licencias</a></li>
+                            <li ><a id="lbtncomi" href="#">Comisiones</a></li>
+                            <li ><a id="lbtnvaca" href="#">Vacaciones</a></li>
+                            <li ><a id="lbtnperm" href="#">Permisos</a></li>
+                            <li ><a id="lbtnlice" href="#">Licencias</a></li>
                         </ul>
                     </li>
                    
                     <li>
                         <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Reportes</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li><a href="#">Flot Charts</a></li>
-                            <li><a href="#">Morris.js Charts</a></li>
-                            <li><a href="#">Rickshaw Charts</a></li>
-                            <li><a href="#">Chart.js</a></li>
-                            <li><a href="#">Peity Charts</a></li>
-                            <li><a href="#">Sparkline Charts</a></li>
+                            <li><a id="lbtnmovi" href="#">Movimientos</a></li>
+                            <li><a id="lbtnotro"href="#">Otros</a></li>
                         </ul>
                     </li>
                 
@@ -74,9 +70,9 @@
                     <li>
                         <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Sistema</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li><a href="#">Accesos</a></li>
-                            <li><a href="#">Perfiles</a></li>
-                            <li><a href="#">Usuarios</a></li>
+                            <li><a id="lbtnacce" href="#">Accesos</a></li>
+                            <li><a id="lbtnperf" href="#">Perfiles</a></li>
+                            <li><a id="lbtnusua" href="#">Usuarios</a></li>
                         </ul>
                     </li>      
                 </ul>
@@ -106,7 +102,7 @@
                     <ul class="dropdown-menu dropdown-messages">
                         <li>
                             <div class="dropdown-messages-box">
-                                <a href="profile.html" class="pull-left">
+                                <a href="#" class="pull-left">
                                     <img alt="image" class="img-circle" src="img/a7.jpg">
                                 </a>
                                 <div class="media-body">
@@ -119,8 +115,8 @@
                         <li class="divider"></li>
                         <li>
                             <div class="dropdown-messages-box">
-                                <a href="profile.html" class="pull-left">
-                                    <img alt="image" class="img-circle" src="img/a4.jpg">
+                                <a href="#" class="pull-left">
+                                    <img alt="image" class="img-circle" src="img/a4.jpg"/>
                                 </a>
                                 <div class="media-body ">
                                     <small class="pull-right text-navy">5h ago</small>
@@ -132,7 +128,7 @@
                         <li class="divider"></li>
                         <li>
                             <div class="dropdown-messages-box">
-                                <a href="profile.html" class="pull-left">
+                                <a href="#" class="pull-left">
                                     <img alt="image" class="img-circle" src="img/profile.jpg" />
                                 </a>
                                 <div class="media-body ">
@@ -145,7 +141,7 @@
                         <li class="divider"></li>
                         <li>
                             <div class="text-center link-block">
-                                <a href="mailbox.html">
+                                <a href="#">
                                     <i class="fa fa-envelope"></i> <strong>Read All Messages</strong>
                                 </a>
                             </div>
@@ -158,7 +154,7 @@
                     </a>
                     <ul class="dropdown-menu dropdown-alerts">
                         <li>
-                            <a href="mailbox.html">
+                            <a href="#">
                                 <div>
                                     <i class="fa fa-envelope fa-fw"></i> You have 16 messages
                                     <span class="pull-right text-muted small">4 minutes ago</span>
@@ -167,7 +163,7 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="profile.html">
+                            <a href="#">
                                 <div>
                                     <i class="fa fa-twitter fa-fw"></i> 3 New Followers
                                     <span class="pull-right text-muted small">12 minutes ago</span>
@@ -176,7 +172,7 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="grid_options.html">
+                            <a href="#">
                                 <div>
                                     <i class="fa fa-upload fa-fw"></i> Server Rebooted
                                     <span class="pull-right text-muted small">4 minutes ago</span>
@@ -232,7 +228,13 @@
                                     08:22 pm
                                 </span>
                                  <span class="label label-success" data-toggle="tooltip" data-original-title="Equipo" data-placement="bottom"><i class="fa fa-desktop"></i></span> <asp:Label ID="lblequipo" runat="server" Text=""></asp:Label>
-                            </li>                      
+                            </li> 
+                            <li class="list-group-item">
+                                <span class="pull-right">
+                                    08:22 pm
+                                </span>
+                                 <span class="label label-success" data-toggle="tooltip" data-original-title="Dominio" data-placement="bottom"><i class="fa fa-windows"></i></span> <asp:Label ID="lbldomain_user" runat="server" Text=""></asp:Label>
+                            </li>                          
                         </ul>
                             </div>
                     </div>
@@ -282,7 +284,6 @@
 
     </form>
 
-<script type="text/javascript" src="js/jquery-2.1.1.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
 <script type="text/javascript" src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
@@ -292,6 +293,11 @@
 
 <!-- jQuery UI -->
 <script type="text/javascript" src="js/plugins/jquery-ui/jquery-ui.min.js"></script>
+
+
+  
+  
+    
 
 </body>
 </html>

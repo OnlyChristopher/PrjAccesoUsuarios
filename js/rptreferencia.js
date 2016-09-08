@@ -30,11 +30,25 @@ $(document).ready(function () {
             $("#txtdocreferencia").focus();
         } else {
 
-            $(".input-group.date").datepicker("remove");
-            $("#txtdocreferencia").attr("disabled", "disabled");
+            $.ajax({
+                type: "POST",
+                url: "Reportes/RptReferencia.aspx/SetDocumentoReferencia",
+                data: '{comision_id: "' + $("#txtrcontrol_transa").text() + '",fecha_referencia: "' + $("#txtfechareferencia").val() + '",documento_referencia: "' + $("#txtdocreferencia").val() + '" }',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    alert(response.d);
 
-            $("#btnimprimir_reporte").show();
-            $("#btnguardar_referencia").hide();
+                    $(".input-group.date").datepicker("remove");
+                    $("#txtdocreferencia").attr("disabled", "disabled");
+
+                    $("#btnimprimir_reporte").show();
+                    $("#btnguardar_referencia").hide();
+                }
+
+            });
+
+         
 
         }
     }

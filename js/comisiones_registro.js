@@ -46,8 +46,8 @@
 
 
 
-    $('#ddlpais').change(function () {
-        if ($(this).val() != '0001') {
+    $("#ddlpais").change(function () {
+        if ($(this).val() != "0001") {
             $("#ddldepartamento").attr('disabled', 'disabled');
             $("#ddldepartamento").empty();
             $("#ddldepartamento").append('<option value="">DEPARTAMENTO</option>');
