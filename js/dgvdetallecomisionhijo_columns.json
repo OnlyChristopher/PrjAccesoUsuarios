@@ -1,0 +1,7 @@
+﻿[
+  { "name": "Fecha_Hora", "title": "Fecha y Hora", "style": { "width": 100, "maxWidth": 100 } },
+  { "name": "Tipo_Registro", "title": "Tipo Registro", "style": { "width": 100, "maxWidth": 100 } },
+  { "name": "Tipo_Control","title": "Tipo Control","type": "date","style": { "width": 100, "maxWidth": 100 }},
+  { "name": "Observacion","title": "Observacion","type": "date","style": { "width": 90, "maxWidth": 90 },"visible": false},
+  { "name": "Operador", "title": "Operador", "type": "date", "style": { "width": 100, "maxWidth": 100 } }
+]

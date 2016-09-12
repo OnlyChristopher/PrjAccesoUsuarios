@@ -1,0 +1,10 @@
+﻿[
+  {"name": "RCONTROL_TRANSA","style": {"width": 80,"maxWidth": 80},"title": "RCONTROL_TRANSA","visible": false},
+  { "name": "Documento", "title": "Documento", "style": { "width": 250, "maxWidth": 250 } },
+  { "name": "Inicio", "title": "Inicio", "type": "date", "style": { "width": 90, "maxWidth": 90 } },
+  { "name": "Termino", "title": "Termino", "type": "date", "style": { "width": 90, "maxWidth": 90 } },
+  { "name": "Motivo","title": "Motivo","style": {"width": 100,"maxWidth": 100,"overflow": "hidden","textOverflow": "ellipsis","wordBreak": "keep-all","whiteSpace": "nowrap"}},
+  { "name": "Tip_Control", "title": "Tipo Control", "style": { "width": 100, "maxWidth": 100 } },
+  { "name": "Destino", "title": "Destino" },
+  { "name": "Datos", "title": "Datos", "visible": false}
+]

@@ -7,16 +7,16 @@ Imports System.Net.NetworkInformation
 Partial Class Main
     Inherits System.Web.UI.Page
     Private Ip As String = ""
-    Private PC As String = ""
-    Private Domanin_PC As String = ""
+    Private Domanin_PC As String
 
 
     Private Sub form1_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles form1.Load
-        Domanin_PC = System.Net.Dns.GetHostName
-        Ip = System.Net.Dns.GetHostByName(Domanin_PC).AddressList(0).ToString()
+        Domanin_PC = System.Net.Dns.GetHostEntry(Request.ServerVariables.Item("REMOTE_HOST")).HostName
+        Ip = HostIP(System.Net.Dns.GetHostName)
+
+        'System.Net.Dns.GetHostByName(Domanin_PC).AddressList(0).ToString()
 
         'System.Security.Principal.WindowsIdentity.GetCurrent().Name.ToString() 
-
 
         If Session("OPE_NOMBRES") Is Nothing Then
             CerrarSession()
@@ -31,8 +31,6 @@ Partial Class Main
 
         End If
     End Sub
-
-
     Private Sub lbtncerrar_Click(sender As Object, e As EventArgs) Handles lbtncerrar.Click
         CerrarSession()
     End Sub
@@ -42,6 +40,12 @@ Partial Class Main
         FormsAuthentication.SignOut()
         Response.Redirect("Login.aspx")
     End Sub
+    Private Function HostIP(ByVal mStrHost As String) As String
+        Dim IpCliente As String
+        IpCliente = Request.ServerVariables("HTTP_X_FORWARDED_FOR") ' se chequea si hay un proxy
+        If IpCliente = "" Then IpCliente = Request.ServerVariables("REMOTE_ADDR")
+        Return IpCliente
+    End Function
 
 End Class
 

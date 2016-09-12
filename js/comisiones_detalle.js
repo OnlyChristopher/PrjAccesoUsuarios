@@ -1,4 +1,4 @@
-﻿$(document).ready(function () {
+﻿$(document).ready(function (funcion) {
 
   
 
@@ -6,61 +6,51 @@
         Detalle de Movimientos 
     **************************/
        
-    $("#txtobservacion").attr('disabled', 'disabled');
-    $("#txtobservacion").css('resize', 'none');
+    $("#txtobservacion").attr("disabled", "disabled");
+    $("#txtobservacion").css("resize", "none");
     
-     selectionrow_print();
+    selectionrow_print();
 
-            var valor = $('#hdcip').val();
-            var img = $('.img-profile');
-            
-           
-       
-            var default_url = "images/sin_foto.png";
-            var img_url = "images/FOTOS_PRUEBAS/" + valor + ".jpg";
+    var valor = $("#hdcip").val();
+    var img = $(".img-profile");
+    var ruta_img = valor.length;
 
-            img.error(function () {
-                $(this).attr('src', default_url)
-            });
-            img.attr('src', img_url);
+    $.ajax({
+        type: "POST",
+        url: "Main/Comisiones.aspx/GetMovimientos",
+        data: '{maspe_carne: "' + valor + '" }',
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: jMovimiento
+    });
 
-       
-            $.ajax({
-                type: "POST",
-                url: "Main/Comisiones.aspx/GetMovimientos",
-                data: '{maspe_carne: "' + valor + '" }',
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: jMovimiento
-            });
-            
+      
    
     function jMovimiento(response) {
-        $('.dgvdetallecomision').find('tr:not(:has(thead))').remove();      
+        $(".dgvdetallecomision").find("tr:not(:has(thead))").remove();      
 
         var obj = jQuery.parseJSON(response.d);
 
-        var columns = [
-                   { "name": "RCONTROL_TRANSA", "title": "RCONTROL_TRANSA", "style": { "width": 80, "maxWidth": 80 } ,"visible" : false},
-                   { "name": "Documento", "title": "Documento", "style": { "width": 250, "maxWidth": 250 } },
-                   { "name": "Inicio", "title": "Inicio","type" : "date", "style": { "width": 90, "maxWidth": 90 } },
-                   { "name": "Termino", "title": "Termino", "type": "date", "style": { "width": 90, "maxWidth": 90 } },
-                   { "name": "Motivo", "title": "Motivo", "style": { "width": 100, "maxWidth": 100, "overflow": "hidden", "textOverflow": "ellipsis", "wordBreak": "keep-all", "whiteSpace": "nowrap" } },
-                   { "name": "Tip_Control", "title": "Tipo Control", "style": { "width": 100, "maxWidth": 100 } },
-                   { "name": "Destino", "title": "Destino" },
-                   { "name": "Datos", "title": "Datos","visible" : false }
-        ]
 
-        $('.dgvdetallecomision').footable({
-            "columns": columns,
-            "rows": obj
-        });
-       
-        /* Recuperar Datos de Oficial Seleccionado */
-        var tabla = $('.dgvdetallecomision').find('tbody tr:not(:has(th))')
-        var tabla_td = tabla.children('td');
-        var data = tabla_td[7].innerText;
-        var data_array = data.split(',');
+        $(".dgvdetallecomision")
+            .footable({
+                "columns": $.Deferred(function (d) {
+                    setTimeout(function () {
+                        $.get("js/dgvdetallecomision_columns.json").then(d.resolve, d.reject);
+                    }, 1000);
+                    setTimeout(function () {
+                        getFunciones();
+                    }, 1500);
+                }),
+                "rows": obj
+            });
+
+        function getFunciones() {
+            /* Recuperar Datos de Oficial Seleccionado */
+            var tabla = $('.dgvdetallecomision').find('tbody tr:not(:has(th))');
+            var tabla_td = tabla.children('td');
+            var data = tabla_td[7].innerText;
+            var data_array = data.split(',');
             $('#lbldatos1').text(data_array[0]);
             $('#lbldatos2').text(data_array[1]);
             $('#lbldatos3').text(data_array[2]);
@@ -69,16 +59,22 @@
             $('#lbldatos6').text(data_array[5]);
 
 
-        $('.dgvdetallecomision_hijo').find('tbody tr:not(:has(thead))').remove();
-  
-        selectionrow_detalle();
+            $(".dgvdetallecomision_hijo").find("tbody tr:not(:has(thead))").remove();
 
-        $('.dgvdetallecomision tfoot .footable-paging').click(function () {
             selectionrow_detalle();
-        })
+
+            $(".dgvdetallecomision tfoot .footable-paging")
+                .click(function () {
+                    selectionrow_detalle();
+                });
 
 
-        Getdgvdetallecomision_hijo(tabla_td[0].innerText);
+            Getdgvdetallecomision_hijo(tabla_td[0].innerText);
+
+        }
+
+       
+      
      
     }
 
@@ -93,18 +89,18 @@
             $(this).children("td").addClass("background-detalle-tr");
             
             $('#txtobservacion').val("");
-            Getdgvdetallecomision_hijo($('#nro_transa').val());
+            Getdgvdetallecomision_hijo($("#nro_transa").val());
         });
 
         
     }
 
-    function Getdgvdetallecomision_hijo(valor) {        
+    function Getdgvdetallecomision_hijo(idPadre) {        
 
         $.ajax({
             type: "POST",
             url: "Main/Comisiones.aspx/GetDetallesMovimientos",
-            data: '{rcontrol_transa: "' + valor + '" }',
+            data: '{rcontrol_transa: "' + idPadre + '" }',
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: jMovimientoDetalle
@@ -118,21 +114,22 @@
         $('.dgvdetallecomision_hijo').find('tbody tr:not(:has(thead))').remove();
 
         var obj = jQuery.parseJSON(response.d);
+
         
-        var columns = [
-                 { "name": "Fecha_Hora", "title": "Fecha y Hora", "style": { "width": 100, "maxWidth": 100 } },
-                 { "name": "Tipo_Registro", "title": "Tipo Registro", "style": { "width": 100, "maxWidth": 100 } },
-                 { "name": "Tipo_Control", "title": "Tipo Control", "type": "date", "style": { "width": 100, "maxWidth": 100 } },
-                 { "name": "Observacion", "title": "Observacion", "type": "date", "style": { "width": 90, "maxWidth": 90 }, "visible": false },
-                 { "name": "Operador", "title": "Operador", "type": "date", "style": { "width": 100, "maxWidth": 100 } }
 
-        ]
-
-        $('.dgvdetallecomision_hijo').footable({
-            "columns": columns,
+        $(".dgvdetallecomision_hijo").footable({
+            "columns": $.Deferred(function (d) {
+                setTimeout(function () {
+                    $.get("js/dgvdetallecomisionhijo_columns.json").then(d.resolve, d.reject);
+                }, 1000);
+                setTimeout(function () {
+                    selectionrow_print();
+                }, 1500);
+            }),
             "rows": obj
         });
-        selectionrow_print()
+
+        
     }
 
 
@@ -170,16 +167,42 @@
         
     });
 
+
+    /* Obtengo valor del cip y extraigo el ultimo caracter para obtener la ruta de la foto*/
+    ruta_img = valor.charAt(ruta_img - 1);
+
+    if (valor.substr(0, 2) === "00") {
+        var nvalor = valor.replace("00", "");
+        ruta_img = nvalor.length;
+        ruta_img = nvalor.charAt(ruta_img - 1);
+        var img_url = "http://172.16.1.13/fotostitular/" + ruta_img + "/" + nvalor + ".jpg";
+    } else {
+        var img_url = "http://172.16.1.13/fotostitular/" + ruta_img + "/" + valor + ".jpg";
+    }
+
+
+    var default_url = "images/sin_foto.png";
+
+    img.error(function () {
+        $(this).attr("src", default_url);
+    });
+    img.attr("src", img_url);
+
+
+
+
+
     $('#btnadicionar').click(function () {
         $("#md_registro .modal-content").load('Main/Comisiones_registro.aspx?xtipreg=xReg');
         $('#md_registro').modal('show');
-    })
+    });
 
 
     /** Limpiar variable  .img-profile **/
     $('[data-dismiss]').click(function () {
-        $('.img-profile').attr("src", "");
-        $('#txtobservacion').val("");
+        $(".img-profile").attr("src", "");
+        $("#txtobservacion").val("");
+        $("#hdcip").val("");
     });
 
     /* Movilidad al Modal*/
