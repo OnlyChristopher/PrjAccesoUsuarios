@@ -18,7 +18,7 @@
     $.ajax({
         type: "POST",
         url: "Main/Comisiones.aspx/GetMovimientos",
-        data: '{maspe_carne: "' + valor + '" }',
+        data: '{maspe_carne: "'   + valor + '" }',
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: jMovimiento
@@ -27,11 +27,8 @@
       
    
     function jMovimiento(response) {
-        $(".dgvdetallecomision").find("tr:not(:has(thead))").remove();      
-
+        $(".dgvdetallecomision").find("tr:not(:has(thead))").remove();
         var obj = jQuery.parseJSON(response.d);
-
-
         $(".dgvdetallecomision")
             .footable({
                 "columns": $.Deferred(function (d) {
@@ -44,38 +41,25 @@
                 }),
                 "rows": obj
             });
+    }
 
-        function getFunciones() {
-            /* Recuperar Datos de Oficial Seleccionado */
-            var tabla = $('.dgvdetallecomision').find('tbody tr:not(:has(th))');
-            var tabla_td = tabla.children('td');
-            var data = tabla_td[7].innerText;
-            var data_array = data.split(',');
-            $('#lbldatos1').text(data_array[0]);
-            $('#lbldatos2').text(data_array[1]);
-            $('#lbldatos3').text(data_array[2]);
-            $('#lbldatos4').text(data_array[3]);
-            $('#lbldatos5').text(data_array[4]);
-            $('#lbldatos6').text(data_array[5]);
-
-
-            $(".dgvdetallecomision_hijo").find("tbody tr:not(:has(thead))").remove();
-
-            selectionrow_detalle();
-
-            $(".dgvdetallecomision tfoot .footable-paging")
-                .click(function () {
-                    selectionrow_detalle();
-                });
-
-
-            Getdgvdetallecomision_hijo(tabla_td[0].innerText);
-
-        }
-
-       
+    function getFunciones() {
+        /* Recuperar Datos de Oficial Seleccionado */
+        var tabla = $('.dgvdetallecomision').find('tbody tr:not(:has(th))');
+        var tabla_td = tabla.children('td');
       
-     
+        $(".dgvdetallecomision_hijo").find("tbody tr:not(:has(thead))").remove();
+
+        selectionrow_detalle();
+
+        $(".dgvdetallecomision tfoot .footable-paging")
+            .click(function () {
+                selectionrow_detalle();
+            });
+
+
+        Getdgvdetallecomision_hijo(tabla_td[0].innerText);
+
     }
 
     function selectionrow_detalle() {
@@ -112,11 +96,7 @@
 
     function jMovimientoDetalle(response) {
         $('.dgvdetallecomision_hijo').find('tbody tr:not(:has(thead))').remove();
-
         var obj = jQuery.parseJSON(response.d);
-
-        
-
         $(".dgvdetallecomision_hijo").footable({
             "columns": $.Deferred(function (d) {
                 setTimeout(function () {
@@ -128,8 +108,6 @@
             }),
             "rows": obj
         });
-
-        
     }
 
 
@@ -146,24 +124,6 @@
     $('#btnreportedetallado').click(function () {
         $("#md_referencia .modal-content").load("Reportes/RptReferencia.aspx?rcontrol_trans=" + $("#nro_transa").val());
         $('#md_referencia').modal("show");
-
-
-
-        /*
-        $.ajax({
-            type: "POST",
-            url: "Main/Comisiones_detalle.aspx/SetVariablesRpt",
-            data: '{maspe_carne: "' + valor + '",nro_transa: "' + $('#nro_transa').val ()+ '" }',
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function (response) {
-                $("#mdrptcontent .modal-content").load('Reportes/RptContent.aspx');
-                $('#mdrptcontent').modal('show');
-            }
-        });
-        */
-
-      
         
     });
 

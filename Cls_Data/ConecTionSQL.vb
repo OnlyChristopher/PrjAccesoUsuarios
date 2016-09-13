@@ -1,5 +1,5 @@
 Public Class ConecTionSQL
-    Protected Shared direction As String = "C:\Cnx\Conexion2.cnx"
+    Protected Shared direction As String = "C:\Cnx\CnxConexion.xml"
     Private Shared Cn As String = Coneccion()
     Private Shared ret_Val As String = ""
     Private Shared xPos As String = ""

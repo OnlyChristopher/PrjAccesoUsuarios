@@ -22,6 +22,8 @@ Partial Class Main
             CerrarSession()
         End If
 
+        HttpContext.Current.Session("HOST") = Domanin_PC
+
         If Not Page.IsPostBack Then
             lblusuario.Text = IIf(Session("OPE_NOMBRES").ToString.Trim = "", Session("OPE_NOMBRES").ToString.ToUpper.Trim, Session("OPE_NOMBRES").ToString.ToUpper.Trim)
             lblgrado.Text = IIf(Session("TGRAD_DES").ToString.Trim = "", Session("TGRAD_DES").ToString.ToUpper.Trim, Session("TGRAD_DES").ToString.ToUpper.Trim)

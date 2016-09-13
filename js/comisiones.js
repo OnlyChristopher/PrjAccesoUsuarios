@@ -126,7 +126,7 @@
     $('#btndetalle').click(function () {
         if ($('#hdcip').val() != "" && $('#hdcip').val() != "No hay resultados") {
             if (mov != 0) {
-                $("#md_detalle .modal-content").load('Main/Comisiones_detalle.aspx');
+                $("#md_detalle .modal-content").load("Main/Comisiones_detalle.aspx?maspe_carne=" + $("#hdcip").val());
                 $('#md_detalle').modal('show');
             } else {
                  toastr.options = {

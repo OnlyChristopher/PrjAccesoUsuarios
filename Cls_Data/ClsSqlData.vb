@@ -207,9 +207,12 @@ Namespace SqlHelpData
                     CargarParametro(Mcomando, Argumentos)
                 End If
                 Return New System.Data.SqlClient.SqlDataAdapter(Mcomando)
+
             Catch ex As Exception
                 Throw New Exception("Capa Data - ClsSqlData.CrearDataAdapterProcConsul:" & vbCrLf & ex.Message, ex)
+
             End Try
+
         End Function
 #End Region
 

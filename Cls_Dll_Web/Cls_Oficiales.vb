@@ -15,4 +15,8 @@ Public NotInheritable Class Cls_Oficiales
         SqlTexto = "[sp_listado_maspe] @mssql = 5, @RCONTROL_TRANSA='" & rcontrol_transa & "'"
         Return ObjsRegNeg.ConsultaxParametros(SqlTexto)
     End Function
+    Public Function DatosOficial(ByVal maspe_carne As String) As DataSet
+        SqlTexto = "[sp_listado_maspe] @mssql = 14, @maspe_carne='" & maspe_carne & "'"
+        Return ObjsRegNeg.ConsultaxParametros(SqlTexto)
+    End Function
 End Class

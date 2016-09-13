@@ -29,7 +29,7 @@
                                         <asp:DropDownList ID="ddltipodoc" CssClass="form-control m-b" runat="server"></asp:DropDownList>
                                     </div>            
                                     <div class="col-md-2">
-                                        <input type="text" id="txtnrodoc" name="txtnrodoc" class="form-control" placeholder="Numero" />
+                                        <input type="number" id="txtnrodoc" name="txtnrodoc" class="form-control" placeholder="Numero" />
                                     </div> 
                                     <div class="col-md-2">
                                         <input type="text" id="txtsiglasdoc" name="txtsiglasdoc" class="form-control" placeholder="Siglas" />

@@ -22,7 +22,7 @@
                                 <div class="row">                                            
                                     <div class="col-md-2">
                                         <label>CIP</label>
-                                        <input maxlength="8" type="text" id="txtcip" name="txtcip" class="form-control" placeholder="CIP" />
+                                        <input maxlength="8" type="number" id="txtcip" name="txtcip" class="form-control" placeholder="CIP" />
                                     </div>
                                     <div class="col-md-2">
                                         <label>Apellido Paterno</label>

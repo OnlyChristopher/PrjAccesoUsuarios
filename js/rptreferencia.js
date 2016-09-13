@@ -38,7 +38,6 @@ $(document).ready(function () {
                 dataType: "json",
                 success: function (response) {
                     alert(response.d);
-
                     $(".input-group.date").datepicker("remove");
                     $("#txtdocreferencia").attr("disabled", "disabled");
 
@@ -52,6 +51,25 @@ $(document).ready(function () {
 
         }
     }
+
+    $("#btnimprimir_reporte")
+        .click(function() {
+            
+       $.ajax({
+           type: "POST",
+           url: "Main/Comisiones_detalle.aspx/SetVariablesRpt",
+           data: '{maspe_carne: "' + valor + '",nro_transa: "' + $("#nro_transa").val ()+ '" }',
+           contentType: "application/json; charset=utf-8",
+           dataType: "json",
+           success: function (response) {
+               $("#mdrptcontent .modal-content").load("Reportes/RptContent.aspx");
+               $("#mdrptcontent").modal("show");
+           }
+       });
+       
+
+        });
+
 
 
     $("#md_referencia")
