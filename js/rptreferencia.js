@@ -42,7 +42,7 @@ $(document).ready(function () {
                 success: function (response) {
                     $.each(response, function (index, el) {
                         dataArray = el.split(",");
-                        alert("element at " + index + ": " + dataArray[0]); 
+                        alert(dataArray[0]); 
                     });
 
                     $(".input-group.date").datepicker("remove");

@@ -101,10 +101,10 @@
             "columns": $.Deferred(function (d) {
                 setTimeout(function () {
                     $.get("js/dgvdetallecomisionhijo_columns.json").then(d.resolve, d.reject);
-                }, 1000);
+                }, 900);
                 setTimeout(function () {
                     selectionrow_print();
-                }, 1500);
+                }, 950);
             }),
             "rows": obj
         });
@@ -118,14 +118,38 @@
                 $('#txtobservacion').val(td[i].innerText);
             }
         });
-    }  
+    }
+
+    toastr.options = {
+        "closeButton": true,
+        "positionClass": "toast-bottom-full-width"
+    }
+
+    $("#btnreportedetallado")
+        .click(function() {
+            if ($("#nro_transa").val() === "") {
+                toastr.error("Seleccione un registro", "Comisiones");
+
+            } else {
+                $("#md_referencia .modal-content")
+                    .load("Reportes/RptReferencia.aspx?rcontrol_trans=" + $("#nro_transa").val());
+                $("#md_referencia").modal("show");
+            }
 
 
-    $("#btnreportedetallado").click(function () {
-        $("#md_referencia .modal-content").load("Reportes/RptReferencia.aspx?rcontrol_trans=" + $("#nro_transa").val());
-        $("#md_referencia").modal("show");
-        
-    });
+        });
+
+    $("#btnaddmov")
+        .click(function() {
+            if ($("#nro_transa").val() === "") {
+                toastr.error("Seleccione un registro", "Comisiones");
+
+            } else {
+                $("#md_referencia .modal-content")
+                    .load("Main/Comisiones_movimiento.aspx?rcontrol_trans=" + $("#nro_transa").val());
+                $("#md_referencia").modal("show");
+            }
+        });
 
 
     /* Obtengo valor del cip y extraigo el ultimo caracter para obtener la ruta de la foto*/

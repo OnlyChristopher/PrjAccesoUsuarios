@@ -106,5 +106,15 @@ Partial Class Main_Comisiones_registro
         Return serializer.Serialize(rows)
 
     End Function
+    <System.Web.Services.WebMethod()>
+    Public Shared Function SetComision(ByVal maspe_carne As String, ByVal ttidocu As String, ByVal nro_doc As String, ByVal siglas As String, ByVal fecha_doc As String _
+                                      , ByVal tipo_control As Integer, ByVal control_doc As String, ByVal tipo_movimiento As Integer, ByVal observacion As String, ByVal fecha_inicio As String _
+                                      , ByVal fecha_termino As String, ByVal ubigeo_d As String, ByVal tpais_cod As String) As String
+        Dim ObjComision As New Cls_Registro
+        Dim ope_registra As String = HttpContext.Current.Session("OPE_COD")
+        Dim ip As String = HttpContext.Current.Session("HOST")
+        Return ObjComision.Insertar_Comision(maspe_carne, ttidocu, nro_doc, siglas, fecha_doc, tipo_control, control_doc, tipo_movimiento, observacion, fecha_inicio, fecha_termino, ubigeo_d, tpais_cod, ope_registra, ip)
+
+    End Function
 
 End Class

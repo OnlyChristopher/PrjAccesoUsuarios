@@ -7,6 +7,12 @@
         <script type="text/javascript" src="js/plugins/datapicker/bootstrap-datepicker.js"></script>
         <script type="text/javascript" src="js/comisiones_registro.js"></script>
     <title></title>
+    <style>
+        .error{
+   border: 1px solid rgba(215, 0, 0, 0.75);
+   box-shadow:inset 0px 0px 2px 0px rgba(255, 0, 0, 0.75); 
+}
+    </style>
 </head>
 <body>
     <form id="form1" runat="server" autocomplete="off">
@@ -29,16 +35,16 @@
                                         <asp:DropDownList ID="ddltipodoc" CssClass="form-control m-b" runat="server"></asp:DropDownList>
                                     </div>            
                                     <div class="col-md-2">
-                                        <input type="number" id="txtnrodoc" name="txtnrodoc" class="form-control" placeholder="Numero" />
+                                        <input type="number" id="txtnrodoc" name="txtnrodoc" class="form-control" placeholder="Numero" required="" />
                                     </div> 
                                     <div class="col-md-2">
-                                        <input type="text" id="txtsiglasdoc" name="txtsiglasdoc" class="form-control" placeholder="Siglas" />
+                                        <input type="text" id="txtsiglasdoc" name="txtsiglasdoc" class="form-control" placeholder="Siglas" required="" />
                                     </div>
                                      <div class="col-md-3">
                                     <div class="form-group" id="data_1">
                                         <div class="input-group date">
                                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                            <input type="text" class="form-control" placeholder="Fecha Doc."/>
+                                            <input type="text" class="form-control" id="txtfechadoc" placeholder="Fecha Doc." required=""/>
                                         </div>
                                     </div>
                                     </div>                                                          
@@ -65,7 +71,7 @@
                                    <div class="form-group" id="data_2">
                                         <div class="input-group date">
                                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                            <input type="text" class="form-control" placeholder="Fecha Ini."/>
+                                            <input type="text" class="form-control" id="txtfechaini" placeholder="Fecha Ini." required=""/>
                                         </div>
                                     </div>
                                          </div>
@@ -77,8 +83,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="sindestino" class="checkbox i-checks">
-                                        <label> <input type="checkbox" id="chksindestino" value=""/> <i></i> Hasta el termino</label>
+                                    <div class="checkbox i-checks">
+                                        <label> <input type="checkbox" id="chksintermino" value=""/> <i></i> Hasta el termino</label>
                                     </div>                                 
                                 </div>
                             </div>
@@ -119,7 +125,7 @@
                                    <div class="col-sm-16">
                                 <div class="row">                                            
                                     <div class="col-md-6">
-                                      <input type="text" placeholder="Detalle" class="form-control" />
+                                      <input type="text" placeholder="Detalle" id="txtdetalleregistro" class="form-control" required="" />
                                         
                                     </div>            
                                 
@@ -136,7 +142,7 @@
                                    <div class="col-sm-16">
                                 <div class="row">                                            
                                     <div class="col-md-9">
-                                      <input type="text" placeholder="Observación" class="form-control" />
+                                      <input type="text" placeholder="Observación" id="txtobservacionregistro" class="form-control" />
                                         
                                     </div>            
                                 
@@ -165,13 +171,14 @@
 
                 $(".iCheck-helper")
                     .click(function() {
-                        var cbAns = ($("#chksindestino").is(":checked")) ? 1 : 0;
+                        var cbAns = ($("#chksintermino").is(":checked")) ? 1 : 0;
                         console.log(cbAns);
                         if (cbAns === 1) {
-                            $("#data_3 .input-group.date").datepicker("option", "disabled", false);
-                            $("#txtfechafin").attr("disabled", "disabled");
-                        } else {
                             $("#data_3 .input-group.date").datepicker("option", "disabled", true);
+                            $("#txtfechafin").attr("disabled", "disabled");
+                            $("#txtfechafin").val("");
+                        } else {
+                            $("#data_3 .input-group.date").datepicker("option", "disabled", false);
                             $("#txtfechafin").removeAttr("disabled");
                         }
                     });

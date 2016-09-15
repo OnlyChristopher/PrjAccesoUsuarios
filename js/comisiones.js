@@ -1,9 +1,10 @@
 ﻿$(document).ready(function () {
 
     var mov;
+   
 
     
-    $('.opciones_dgvcomisiones').hide();
+    $(".opciones_dgvcomisiones").hide();
 
        
     $("#txtobservacion").attr('disabled', 'disabled');
@@ -89,10 +90,10 @@
       
    
     function selectionrow() {
-        $('.dgvcomisiones').find('tbody tr:not(:has(th))').click(function () {
-            var td = $(this).children('td');
+        $(".dgvcomisiones").find("tbody tr:not(:has(th))").click(function () {
+            var td = $(this).children("td");
             for (var i = 0; i < 8; ++i) {
-                $('#hdcip').val(td[0].innerText);
+                $("#hdcip").val(td[0].innerText);
 
                 mov = td[7].innerText
                 cell = td[0].innerText + " - " + td[1].innerText + " - " + td[3].innerText + " " + td[4].innerText + " " + td[5].innerText

@@ -75,6 +75,7 @@
                     <button id="btnadicionar" type="button" class="btn btn-primary">Adicionar</button>
                     <button type="button" class="btn btn-primary">Modificar</button>
                     <button type="button" class="btn btn-primary">Eliminar</button>
+                    <button id="btnaddmov"type="button" class="btn btn-primary">Ad. Mov.</button>
                     <button id="btnreportedetallado" type="button" class="btn btn-primary">Reporte</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                 </div>
