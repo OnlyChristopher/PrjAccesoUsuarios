@@ -65,19 +65,20 @@
         SqlTexto = "[sp_listado_maspe] @mssql = 12, @departamento='" & d & "', @provincia='" & p & "'"
         Return ObjRegNeg.ConsultaxParametros(SqlTexto)
     End Function
-    Public Function Rpt_Movimientos(ByVal maspe_carne As String, ByVal rcontrol_transa As String) As DataTable
-        SqlTexto = "[sp_listado_maspe] @mssql = 13, @maspe_carne='" & maspe_carne & "', @RCONTROL_TRANSA='" & rcontrol_transa & "'"
+    Public Function Rpt_Movimientos(ByVal maspe_carne As String, ByVal rcontrol_transa As String, ByVal id_referencia As Integer) As DataTable
+        SqlTexto = "[sp_listado_maspe] @mssql = 13, @maspe_carne='" & maspe_carne & "', @RCONTROL_TRANSA='" & rcontrol_transa & "', @ID_DOCREFERENCIA=" & id_referencia & ""
         Dim TablaRpt As DataTable = ObjRegNeg.ConsultaxParametros(SqlTexto).Tables(0)
         Return TablaRpt
     End Function
-    Public Sub Insertar_DocumentoReferencia(ByVal comision_id As Integer, ByVal fecha_referencia As String, ByVal documento_referencia As String, ByVal ope_registra As String, ByVal ip As String)
+    Public Function Insertar_DocumentoReferencia(ByVal comision_id As Integer, ByVal fecha_referencia As String, ByVal documento_referencia As String, ByVal ope_registra As String, ByVal ip As String) As String
         Try
 
             SqlTexto = "[Control].[sp_Registro] @mssql=8,@comision_id=" & comision_id & ",@fecha_referencia='" & fecha_referencia & "',@documento_referencia='" & documento_referencia & "',@ope_registra='" & ope_registra & "',@estacion_registra='" & ip & "'"
 
-            ObjRegNeg.InsertarxActualizaxBorra(SqlTexto)
+            Return ObjRegNeg.ConsultaxParametros(SqlTexto).Tables(0).Rows(0)(0).ToString
+
         Catch ex As Exception
             Throw New Exception("Cls_Medidas :" & vbCrLf & ex.Message, ex)
         End Try
-    End Sub
+    End Function
 End Class

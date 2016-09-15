@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
         <script type="text/javascript" src="js/plugins/datapicker/bootstrap-datepicker.js"></script>
-        <script type="text/javascript" src="../js/comisiones_registro.js"></script>
+        <script type="text/javascript" src="js/comisiones_registro.js"></script>
     <title></title>
 </head>
 <body>
@@ -58,6 +58,9 @@
                                     <div class="col-md-2">
                                         <asp:DropDownList ID="ddltipcon" CssClass="form-control m-b" runat="server"></asp:DropDownList>
                                     </div>
+                                     <div id="cdocumento" class="col-md-2">
+                                        <input type="text" id="txtcdocumento" name="txtcdocumento" class="form-control" placeholder="Detalle Documento" />
+                                    </div>
                                      <div class="col-md-3">
                                    <div class="form-group" id="data_2">
                                         <div class="input-group date">
@@ -66,15 +69,17 @@
                                         </div>
                                     </div>
                                          </div>
-                                     <div class="col-md-3">
-                                   <div class="form-group" id="data_3">
-                                        <div class="input-group date">
-                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                            <input type="text" class="form-control" placeholder="Fecha Fin."/>
+                                    <div class="col-md-3">
+                                        <div class="form-group" id="data_3">
+                                            <div class="input-group date">
+                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                <input type="text" class="form-control" id="txtfechafin" placeholder="Fecha Fin."/>
+                                            </div>
                                         </div>
                                     </div>
-                                         </div>
-                                                                                 
+                                    <div id="sindestino" class="checkbox i-checks">
+                                        <label> <input type="checkbox" id="chksindestino" value=""/> <i></i> Hasta el termino</label>
+                                    </div>                                 
                                 </div>
                             </div>
                     </div>
@@ -149,6 +154,29 @@
     </div>
     
     </form>
-    
+     <!-- iCheck -->
+    <script src="js/plugins/iCheck/icheck.min.js"></script>
+     <script>
+            $(document).ready(function () {
+                $('.i-checks').iCheck({
+                    checkboxClass: 'icheckbox_square-green',
+                    radioClass: 'iradio_square-green',
+                });
+
+                $(".iCheck-helper")
+                    .click(function() {
+                        var cbAns = ($("#chksindestino").is(":checked")) ? 1 : 0;
+                        console.log(cbAns);
+                        if (cbAns === 1) {
+                            $("#data_3 .input-group.date").datepicker("option", "disabled", false);
+                            $("#txtfechafin").attr("disabled", "disabled");
+                        } else {
+                            $("#data_3 .input-group.date").datepicker("option", "disabled", true);
+                            $("#txtfechafin").removeAttr("disabled");
+                        }
+                    });
+            });
+
+        </script>
 </body>
 </html>

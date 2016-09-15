@@ -1,7 +1,9 @@
 ﻿$(document).ready(function () {
-    
-    
-    $(".registro").find(".modal-title").append(cell)
+
+  
+
+    $(".registro").find(".modal-title").append(cell);
+    $("#cdocumento").hide();
 
     $('#data_1 .input-group.date').datepicker({
         todayBtn: "linked",
@@ -30,19 +32,28 @@
     $(".ibox").css('margin-bottom', '10px');
 
 
-    $('#btnguardar_comireg').click(function () {
-        if ($('#ddltipodoc').val() == "0000") {
-            alert('Seleccione un Tipo de Documento')
-            $('#ddltipodoc').focus();
-        }
+    $('#btnguardar_comireg')
+        .click(function() {
+            if ($('#ddltipodoc').val() == "0000") {
+                alert('Seleccione un Tipo de Documento')
+                $('#ddltipodoc').focus();
+            }
 
-        if ($('#txtnrodoc').val() == "") {
-            alert('Ingrese Nro. Documento')
-            $('#txtnrodoc').focus();
-        }
+            if ($('#txtnrodoc').val() == "") {
+                alert('Ingrese Nro. Documento')
+                $('#txtnrodoc').focus();
+            }
 
-    })
+        });
 
+    $("#ddltipcon")
+        .change(function() {
+            if ($(this).val() === "2") {
+                $("#cdocumento").show();
+            } else {
+                $("#cdocumento").hide();
+            }
+        });
 
 
 
@@ -124,7 +135,7 @@
             data: '{d: "' + d + '" ,p: "' + p + '"}',
             contentType: "application/json; charset=utf-8",
             dataType: "json",
-            success: function (response) {
+            success: function(response) {
                 var obj = jQuery.parseJSON(response.d);
                 for (var i = 0; i < obj.length; i++) {
                     var ddl = obj[i];
@@ -133,9 +144,8 @@
                 }
             }
 
-        })
+        });
     });
-
 
     /* Movilidad al Modal*/
     $("#md_registro").draggable({

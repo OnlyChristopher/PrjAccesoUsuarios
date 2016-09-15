@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
 
     var mov;
-    var datoscell;
+
     
     $('.opciones_dgvcomisiones').hide();
 

@@ -21,10 +21,8 @@ Partial Class Reportes_RptReferencia
         Dim comision_id As Integer = HttpContext.Current.Session("rcontrol_trans")
         Dim ip As String = HttpContext.Current.Session("HOST")
 
-        Const msg As String = "Registro Correcto"
+        Return ObjRegistro.Insertar_DocumentoReferencia(comision_id, fecha_referencia, documento_referencia, ope_registra, ip)
 
-        ObjRegistro.Insertar_DocumentoReferencia(comision_id, fecha_referencia, documento_referencia, ope_registra, ip)
-        Return msg
     End Function
 
 End Class

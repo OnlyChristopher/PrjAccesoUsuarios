@@ -30,12 +30,12 @@ Partial Class Main_Comisiones_detalle
     End Sub
 
     <System.Web.Services.WebMethod()>
-    Public Shared Function SetVariablesRpt(ByVal maspe_carne As String, ByVal nro_transa As String) As String
+    Public Shared Function SetVariablesRpt(ByVal maspe_carne As String, ByVal nro_transa As String, ByVal id_referencia As Integer) As String
         Dim Obj_Load As New Cls_Registro
         'Dim Server As New System.Web.UI.Page
         Dim rpt As New ReportDocument
         rpt.Load(System.Web.HttpContext.Current.Server.MapPath("../Reportes/RptMov.rpt"))
-        rpt.SetDataSource(Obj_Load.Rpt_Movimientos(maspe_carne, nro_transa))
+        rpt.SetDataSource(Obj_Load.Rpt_Movimientos(maspe_carne, nro_transa, id_referencia))
         rpt.ExportToDisk(ExportFormatType.PortableDocFormat, System.Web.HttpContext.Current.Server.MapPath("../Reportes/Reporte.pdf"))
         Return True
     End Function

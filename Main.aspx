@@ -16,6 +16,8 @@
     <link href="css/style.css" rel="stylesheet"/>
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet"/>   
     <link href="css/plugins/toastr/toastr.min.css" rel="stylesheet"/>
+    <link href="css/plugins/iCheck/custom.css" rel="stylesheet"/>
+
     
     <script type="text/javascript" src="js/jquery-2.1.1.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
