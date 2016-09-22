@@ -40,7 +40,7 @@
                 "closeButton": true,
                 "positionClass": "toast-bottom-full-width"
             }
-            if (comprobarCamposRequired()) {
+            if (comprobarCamposRequired("frmregistrocomision")) {
                 $.ajax({
                     type: "POST",
                     url: "Main/Comisiones_registro.aspx/SetComision",
@@ -78,40 +78,19 @@
                     success: function(response) {
                         toastr.success(response.d, "Comisiones");
                         $("#btnguardar_comireg").hide();
+                        getDgvdetallecomision();
                     }
                 });
             } else {
-                toastr.error("Rellene todos los campos ...", "Comisiones");
+                toastr.error("Rellene todos los campos ", "Comisiones");
             }
 
 
         });
 
-    function comprobarCamposRequired() {
-        var correcto = true;
-        var text   = $('input[type="text"]:required');
-        var number = $('input[type="number"]:required');
-        var select = $("select:required");
-        $(text).each(function () {
-            if ($(this).val() === "") {
-                correcto = false;
-                $(this).addClass("error");
-            }
-        });
-        $(number).each(function () {
-            if ($(this).val() === "") {
-                correcto = false;
-                $(this).addClass("error");
-            }
-        });
-        $(select).each(function () {
-            if ($(this).val() === "0" || $(this).val() === "0000" || $(this).val() === "") {
-                correcto = false;
-                $(this).addClass("error");
-            }
-        });
-        return correcto;
-    }
+    $("input[type=text]").keypress(function (e) {
+        return soloLetras(event);
+    });
 
     $('input[type="text"]:required').click(function () {
         $(this).removeClass("error");
@@ -237,4 +216,11 @@
             $('body').addClass('modal-open');
         }
     });
+
+    
+    function getDgvdetallecomision() {
+        getMovimientos();
+                console.log("Recarga");
+    };
+
 });

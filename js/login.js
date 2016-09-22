@@ -12,12 +12,12 @@ $(document).ready(function () {
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
-                    if (response.d == "Error") 
+                    if (response.d === "Error") 
                         {
                             validar();
                         }
-                    else if (response.d == "Ingreso") {
-                        valor = response.d;
+                    else if (response.d === "Ingreso") {
+                        //valor = response.d;
                         $(location).attr("href", "Main.aspx");
                     };
                 },

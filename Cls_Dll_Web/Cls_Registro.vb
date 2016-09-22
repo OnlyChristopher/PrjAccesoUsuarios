@@ -91,4 +91,27 @@
             Throw New Exception("Cls_Medidas :" & vbCrLf & ex.Message, ex)
         End Try
     End Function
+    Public Function Insertar_ComisionDetalle(ByVal comision_id As String, ByVal fecha_origen As String, ByVal ttip1control As String, ByVal tipo_control As String, ByVal observacion As String _
+                                      , ByVal ope_registra As String, ByVal estacion_registra As String) As String
+        Try
+            SqlTexto = "[Control].[sp_Registro] @mssql=5,@comision_id='" & comision_id & "',@fecha_origen='" & fecha_origen & "',@ttip1control='" & ttip1control & "',@tipo_control='" & tipo_control & "',@observacion='" & observacion & "', " &
+                        "@ope_registra='" & ope_registra & "',@estacion_registra='" & estacion_registra & "'"
+
+            Return ObjRegNeg.ConsultaxParametros(SqlTexto).Tables(0).Rows(0)(0).ToString
+        Catch ex As Exception
+            Throw New Exception("Cls_Medidas :" & vbCrLf & ex.Message, ex)
+        End Try
+    End Function
+    Public Sub Tipo_ControlMov(ByVal obj As Object)
+        Dim ds As New Data.DataSet
+        SqlTexto = "[sp_listado_maspe] @mssql = 15"
+        ds = ObjRegNeg.ConsultaxParametros(SqlTexto)
+        If ds.Tables(0).Rows.Count > 0 Then
+            obj.enabled = True
+        Else
+            obj.enabled = Not True
+        End If
+        obj.DataSource = ds.Tables(0).DefaultView
+        ds.Dispose()
+    End Sub
 End Class

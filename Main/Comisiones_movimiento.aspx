@@ -4,10 +4,16 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+    <link rel="stylesheet" href="css/bootstrap-datetimepicker.css" />
+    <script type="text/javascript" src="js/moment-with-locales.js"></script>
+    <script type="text/javascript" src="js/bootstrap-datetimepicker.js"></script>
+    <script type="text/javascript" src="js/comisiones_movimiento.js"></script>
+
+     
     <title></title>
 </head>
 <body>
-    <form id="form1" runat="server" autocomplete="off">
+    <form id="frmmovimientos" runat="server" autocomplete="off">
 
             
     <div class="modal-header registro-movimiento">
@@ -30,12 +36,13 @@
                                 <div class="form-group" style="height:40px;">
                                     <label class="col-lg-2 control-label">Fecha:</label>
                                     <div class="col-lg-5">
-                                          <div class="form-group" id="data_fechadoc">
+                                          <div class="form-group" id="data_fechacontrolmov" >
                                         <div class="input-group date">
                                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                            <input type="text" id="txtfechareferencia" class="form-control" placeholder="Fecha Doc."/>
+                                            <input type="text" id="txtfechamovimiento" class="form-control" placeholder="Fecha Doc."/>
                                         </div>
                                     </div>
+         
                                     </div>
                                 </div>
                                    
@@ -43,14 +50,14 @@
                                     <label class="col-lg-2 control-label">Tipo Registro:</label>
 
                                     <div class="col-lg-5">
-                                       <input type="text" id="txtdocreferencia" placeholder="Documento" class="form-control" />
+                                        <asp:DropDownList ID="ddltiporeg" CssClass="form-control m-b" runat="server"></asp:DropDownList>
                                        </div>
                                 </div>
                                       <div class="form-group" style="height:40px;">
                                     <label class="col-lg-2 control-label">Tipo Control:</label>
 
-                                    <<div class="col-lg-5">
-                                       <input type="text" id="txtdocreferencia" placeholder="Documento" class="form-control" />
+                                    <div class="col-lg-5">
+                                        <asp:DropDownList ID="ddltipocon" CssClass="form-control m-b" runat="server"></asp:DropDownList>
                                        </div>
                                 </div>
                                           <div class="form-group" style="height:40px;">
@@ -59,6 +66,8 @@
                                     <div class="col-lg-5">
                                         <textarea id="txtobservacionmovimiento"  placeholder="Obervacion" class="form-control"></textarea>
                                        </div>
+                                                          <asp:TextBox ID="txtcomision_id" runat="server" Visible="False"></asp:TextBox>
+
                                 </div>
                                
                                
@@ -71,10 +80,11 @@
                               
                                   </div>
                 <div class="modal-footer">
-                    <button id="btnguardar_referencia" type="button" class="btn btn-primary">Guardar</button>
+                    <button id="btnguardar_comisiondetalle" type="button" class="btn btn-primary">Guardar</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                 </div>
-            <asp:TextBox ID="txtrcontrol_transa" runat="server" Visible="False"></asp:TextBox>
+        
+        
     </form>
 </body>
 </html>

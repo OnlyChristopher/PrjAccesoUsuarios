@@ -15,7 +15,7 @@
     </style>
 </head>
 <body>
-    <form id="form1" runat="server" autocomplete="off">
+    <form id="frmregistrocomision" runat="server" autocomplete="off">
     <div>
             
     <div class="modal-header registro">
@@ -44,7 +44,7 @@
                                     <div class="form-group" id="data_1">
                                         <div class="input-group date">
                                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                            <input type="text" class="form-control" id="txtfechadoc" placeholder="Fecha Doc." required=""/>
+                                            <input type="text" class="form-control" id="txtfechadoc" placeholder="Fecha Doc." required="" disabled="disabled"/>
                                         </div>
                                     </div>
                                     </div>                                                          
@@ -71,7 +71,7 @@
                                    <div class="form-group" id="data_2">
                                         <div class="input-group date">
                                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                            <input type="text" class="form-control" id="txtfechaini" placeholder="Fecha Ini." required=""/>
+                                            <input type="text" class="form-control" id="txtfechaini" placeholder="Fecha Ini." required="" disabled="disabled"/>
                                         </div>
                                     </div>
                                          </div>
@@ -79,13 +79,16 @@
                                         <div class="form-group" id="data_3">
                                             <div class="input-group date">
                                                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                <input type="text" class="form-control" id="txtfechafin" placeholder="Fecha Fin."/>
+                                                <input type="text" class="form-control" id="txtfechafin" placeholder="Fecha Fin." disabled="disabled"/>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="checkbox i-checks">
+                                      <div class="col-md-2">
+                                        <div class="checkbox i-checks">
                                         <label> <input type="checkbox" id="chksintermino" value=""/> <i></i> Hasta el termino</label>
-                                    </div>                                 
+                                        </div>  
+                                      </div>  
+                                                          
                                 </div>
                             </div>
                     </div>
@@ -155,7 +158,7 @@
                                   </div>
                 <div class="modal-footer">
                     <button id="btnguardar_comireg" type="button" class="btn btn-primary">Guardar</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <button id="btncerrar_comireg" type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                 </div>
     </div>
     

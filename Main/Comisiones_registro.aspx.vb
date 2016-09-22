@@ -7,7 +7,7 @@ Imports System.Collections.Generic
 Partial Class Main_Comisiones_registro
     Inherits System.Web.UI.Page
     Private Obj_Load As New Cls_Registro
-    Private Sub form1_Load(sender As Object, e As EventArgs) Handles form1.Load
+    Private Sub frmregistrocomision_Load(sender As Object, e As EventArgs) Handles frmregistrocomision.Load
         If Not Page.IsPostBack Then
 
             Obj_Load.Tipos_Documentos(ddltipodoc)
