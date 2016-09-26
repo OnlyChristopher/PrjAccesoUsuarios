@@ -88,6 +88,9 @@ $(document).ready(function (funcion) {
             $(".img-profile").attr("src", "");
             $("#txtobservacion").val("");
             $("#hdcip").val("");
+            $(".background-tr").removeClass("background-tr");
+            $(".dgvdetallecomision").find("tr:not(:has(thead))").remove();
+            $(".dgvdetallecomision_hijo").find("tr:not(:has(thead))").remove();
         });
 
     /* Movilidad al Modal*/
@@ -134,35 +137,51 @@ function getFunciones() {
     var tabla = $(".dgvdetallecomision").find("tbody tr:not(:has(th))");
     var tablaTd = tabla.children("td");
 
-    $(".dgvdetallecomision_hijo").find("tbody tr:not(:has(thead))").remove();
+    $(".dgvdetallecomision_hijo").find("tr:not(:has(thead))").remove();
 
-    selectionrowDetalle();
-    var i = 0;
+    selectionrowDetalle();//Para obtener el valor de la fila seleccionada
+ 
 
     getdgvdetallecomisionHijo(tablaTd[0].innerText);
 
-    $(".dgvdetallecomision tfoot .footable-paging")
-        .click(function () {
-            i += 1;
-            console.log(i);
-            selectionrowDetalle();
-        });
+   
 
 }
 
 function selectionrowDetalle() {
+    var j = 0;
     $(".dgvdetallecomision").find("tbody tr:not(:has(th))").click(function () {
+        
+        j += 1;
+        console.log(j);
         var td = $(this).children("td");
+        var nroTransa = "";
+
         for (var i = 0; i < 1; ++i) {
-            $("#nro_transa").val(td[i].innerText);
+            nroTransa = td[i].innerText;
+            $("#nro_transa").val(nroTransa);
         }
+
         $(".background-detalle-tr").removeClass("background-detalle-tr");
         $(this).children("td").addClass("background-detalle-tr");
         $("#txtobservacion").val("");
-        getdgvdetallecomisionHijo($("#nro_transa").val());
+     
+        getdgvdetallecomisionHijo(nroTransa);
+       
+
     });
 
 
+}
+
+
+function updateBackground() {
+    $(".dgvdetallecomision tfoot .footable-paging").click(null);
+    $(".dgvdetallecomision tfoot .footable-paging").click(function () {
+        $(".background-detalle-tr").removeClass("background-detalle-tr");
+        //console.log()
+        selectionrowDetalle();
+    });
 }
 
 function getdgvdetallecomisionHijo(idPadre) {
@@ -190,6 +209,7 @@ function jMovimientoDetalle(response) {
         }),
         "rows": obj
     });
+    updateBackground();
 }
 
 function selectionrowPrint() {

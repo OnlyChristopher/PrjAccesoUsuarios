@@ -148,6 +148,7 @@ function onSuccess(response) {
 
     $(".dgvcomisiones tfoot .footable-paging")
         .click(function () {
+            $(".background-tr").removeClass("background-tr");
             selectionrow();
         });
 }
