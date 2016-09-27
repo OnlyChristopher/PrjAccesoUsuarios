@@ -4,8 +4,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-        <script type="text/javascript" src="js/plugins/datapicker/bootstrap-datepicker.js"></script>
-        <script type="text/javascript" src="js/comisiones_registro.js"></script>
+    <script type="text/javascript" src="js/plugins/datapicker/bootstrap-datepicker.js"></script>
+    <script type="text/javascript" src="js/comisiones_registro.js"></script>   
     <title></title>
     <style>
         .error{
@@ -35,7 +35,7 @@
                                         <asp:DropDownList ID="ddltipodoc" CssClass="form-control m-b" runat="server"></asp:DropDownList>
                                     </div>            
                                     <div class="col-md-2">
-                                        <input type="number" id="txtnrodoc" name="txtnrodoc" class="form-control" placeholder="Numero" required="" />
+                                        <input type="number" id="txtnrodoc" name="txtnrodoc" class="form-control" placeholder="Numero" required="" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"/>
                                     </div> 
                                     <div class="col-md-2">
                                         <input type="text" id="txtsiglasdoc" name="txtsiglasdoc" class="form-control" placeholder="Siglas" required="" />
@@ -75,7 +75,7 @@
                                         </div>
                                     </div>
                                          </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3" id="dpfechafin">
                                         <div class="form-group" id="data_3">
                                             <div class="input-group date">
                                                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
@@ -83,7 +83,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                      <div class="col-md-2">
+                                      <div class="col-md-3">
                                         <div class="checkbox i-checks">
                                         <label> <input type="checkbox" id="chksintermino" value=""/> <i></i> Hasta el termino</label>
                                         </div>  
@@ -158,18 +158,19 @@
                                   </div>
                 <div class="modal-footer">
                     <button id="btnguardar_comireg" type="button" class="btn btn-primary">Guardar</button>
-                    <button id="btncerrar_comireg" type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                 </div>
     </div>
     
     </form>
      <!-- iCheck -->
+      
     <script src="js/plugins/iCheck/icheck.min.js"></script>
      <script>
             $(document).ready(function () {
                 $('.i-checks').iCheck({
                     checkboxClass: 'icheckbox_square-green',
-                    radioClass: 'iradio_square-green',
+                    radioClass: 'iradio_square-green'
                 });
 
                 $(".iCheck-helper")
@@ -177,12 +178,9 @@
                         var cbAns = ($("#chksintermino").is(":checked")) ? 1 : 0;
                         console.log(cbAns);
                         if (cbAns === 1) {
-                            $("#data_3 .input-group.date").datepicker("option", "disabled", true);
-                            $("#txtfechafin").attr("disabled", "disabled");
-                            $("#txtfechafin").val("");
+                            $("#dpfechafin").hide();
                         } else {
-                            $("#data_3 .input-group.date").datepicker("option", "disabled", false);
-                            $("#txtfechafin").removeAttr("disabled");
+                            $("#dpfechafin").show();
                         }
                     });
             });

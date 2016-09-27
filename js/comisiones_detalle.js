@@ -1,19 +1,21 @@
 ﻿/**
  * DETALLE DE MOVIMIENTOS
- * @description [description]
- * @author [author] <>
- * @copyright [description]
- * @version [version]
+ * @description [Detalle de los movimiento del personal]
+ * @author [@Onlychristopher]
+ * @copyright [DIREJEPER-OFITCE]
+ * @version [1.0]
  */
 
 /** @type {String} [Valor del CIP seleccionado o buscado] */
 var valor = $("#hdcip").val();
+/** @type {string} [Imagen por defecto] */
 var defaultUrl = "images/sin_foto.png";
+/** @type {string} [Ruta de la imagen] */
 var imgUrl;
 
 /**
  * Funciones Principales
- * @type {Object}
+ * @type {{jMovimientoDetalle: comDet.jMovimientoDetalle, getdgvdetallecomisionHijo: comDet.getdgvdetallecomisionHijo, selectionrowDetalle: comDet.selectionrowDetalle, getFunciones: comDet.getFunciones, jMovimiento: comDet.jMovimiento, getMovimientos: comDet.getMovimientos, updateBackground: comDet.updateBackground, selectionrowPrint: comDet.selectionrowPrint}}
  */
 var comDet = {
     jMovimientoDetalle: function (response) {
@@ -60,9 +62,7 @@ var comDet = {
             comDet.getdgvdetallecomisionHijo(nroTransa);
         });
     },
-    /**
-     * Recuperar Datos de Oficial Seleccionado
-     */
+   
     getFunciones: function () {
         tabla = $(".dgvdetallecomision").find("tbody tr:not(:has(th))");
         tablaTd = tabla.children("td");
@@ -119,17 +119,24 @@ $(document).ready(function (funcion) {
 
     comDet.getMovimientos();
 
-    var valor = $("#hdcip").val();
     var img = $(".img-profile");
     var rutaImg = valor.length;
 
     /** @type {String} [Obtengo valor del cip y extraigo el ultimo caracter para obtener la ruta de la foto] */
     rutaImg = valor.charAt(rutaImg - 1);
 
+    /**
+     * Asigno propiedades al plugin toastr
+     * @type {{closeButton: boolean, positionClass: string}}
+     */
     toastr.options = {
         "closeButton": true,
         "positionClass": "toast-bottom-full-width"
     };
+
+    /** Botón para generar reporte de los movimientos
+     *
+     */
     $("#btnreportedetallado").click(function () {
         if ($("#nro_transa").val() === "") {
             toastr.error("Seleccione un registro", "Comisiones");
@@ -139,6 +146,10 @@ $(document).ready(function (funcion) {
             $("#md_referencia").modal("show");
         }
     });
+
+    /** Botón para adicionar detalle del movimiento
+     *
+     */
     $("#btnaddmov").click(function () {
         if ($("#nro_transa").val() === "") {
             toastr.error("Seleccione un registro", "Comisiones");
@@ -149,6 +160,9 @@ $(document).ready(function (funcion) {
         }
     });
 
+    /**
+     * Asignamos la ruta de las fotos segun el numero del CIP
+     */
     if (valor.substr(0, 2) === "00") {
         var nvalor = valor.replace("00", "");
         rutaImg = nvalor.length;
@@ -158,17 +172,21 @@ $(document).ready(function (funcion) {
         imgUrl = "http://172.16.1.13/fotostitular/" + rutaImg + "/" + valor + ".jpg";
     }
 
+    /**
+     * Asignamos imagen por defecto en caso no encuentre la foto
+     */
     img.error(function () {
         $(this).attr("src", defaultUrl);
     });
     img.attr("src", imgUrl);
 
+    /** Botón adicionar movimientos   */
     $("#btnadicionar").click(function () {
         $("#md_registro .modal-content").load("Main/Comisiones_registro.aspx?xtipreg=xReg");
         $("#md_registro").modal("show");
     });
 
-    /** [Limpiar variable  .img-profile] */
+    /** [Limpiar variables] */
     $("[data-dismiss]").click(function () {
         $(".img-profile").attr("src", "");
         $("#txtobservacion").val("");
@@ -178,7 +196,7 @@ $(document).ready(function (funcion) {
         $(".dgvdetallecomision_hijo").find("tr:not(:has(thead))").remove();
     });
 
-    /** @type {String} [Movilidad al Modal] */
+    /** [Movilidad al Modal] */
     $("#md_detalle").draggable({
         handle: ".modal-header"
     });

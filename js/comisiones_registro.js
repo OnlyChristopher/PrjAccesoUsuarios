@@ -1,6 +1,5 @@
 ﻿$(document).ready(function () {
 
-  
 
     $(".registro").find(".modal-title").append(cell);
     $("#cdocumento").hide();
@@ -79,6 +78,7 @@
                         toastr.success(response.d, "Comisiones");
                         $("#btnguardar_comireg").hide();
                         getDgvdetallecomision();
+
                     }
                 });
             } else {
@@ -128,6 +128,8 @@
                 $("#ddlciudad").attr('disabled', 'disabled');
                 $("#ddlciudad").empty();
                 $("#ddlciudad").append('<option value="">CIUDAD</option>');
+
+                $("select").prop("required", false);
             } else {
                 $("#ddldepartamento").empty();
                 $("#ddldepartamento").removeAttr("disabled");
@@ -205,7 +207,7 @@
         });
     });
 
-    /* Movilidad al Modal*/
+    /** [Movilidad al Modal]*/
     $("#md_registro").draggable({
         handle: ".modal-header"
     });
@@ -217,10 +219,15 @@
         }
     });
 
-    
+
     function getDgvdetallecomision() {
-        getMovimientos();
+        comDet.getMovimientos();
                 console.log("Recarga");
+        setTimeout(function () {
+            $("#md_registro").modal("toggle");
+        }, 1500)
+       ;
     };
+
 
 });

@@ -22,7 +22,7 @@
                                 <div class="row">                                            
                                     <div class="col-md-2">
                                         <label>CIP</label>
-                                        <input maxlength="8" type="number" id="txtcip" name="txtcip" class="form-control" placeholder="CIP" />
+                                        <input maxlength="8" type="number" id="txtcip" name="txtcip" class="form-control" placeholder="CIP" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"/>
                                     </div>
                                     <div class="col-md-2">
                                         <label>Apellido Paterno</label>

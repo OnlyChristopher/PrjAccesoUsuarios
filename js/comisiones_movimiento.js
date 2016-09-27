@@ -36,6 +36,7 @@
                         toastr.success(response.d, "Comisiones");
                         $("#btnguardar_comisiondetalle").hide();
                         getDgvdetallecomision();
+
                     }
                 });
             } else {
@@ -45,8 +46,13 @@
         });
 
     function getDgvdetallecomision() {
-        getMovimientos();
-        console.log("Recarga");
+        comDet.getMovimientos();
+            console.log("Recarga");
+        
+        setTimeout(function () {
+            $("#md_referencia").modal("toggle");
+        }, 1500)
+       ;
     };
 
     $("#md_referencia")
